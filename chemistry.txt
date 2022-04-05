@@ -1,0 +1,92 @@
+﻿1.
+Of the following name/symbol combinations of elements, which one is WRONG?
+(a) uranium/U
+(b) sulfur/S
+(c) nitrogen/N
+(d) potassium/K
+(e) iron/I
+2.
+Of the following symbol/name combinations of elements, which one is WRONG?
+(a) C/carbon
+(b) B/barium
+(c) F/fluorine
+(d) N/nitrogen
+(e) U/uranium
+3.
+The chemical symbol for manganese is
+(a) Mn
+(b) Mo
+(c) Ma
+(d) Ga
+(e) Mg
+4.
+The number 0.005436 has how many significant figures?
+(a) 7
+(b) 3
+(c) 4
+(d) 5
+(e) 6
+5.
+The number 10.00 has how many significant figures?
+(a) 1
+(b) 2
+(c) 3
+(d) 4
+(e) 5
+6.
+What is the volume of a 2.50 gram block of metal whose density is 6.72 grams per cubic centimeter?
+(a) 16.8 cubic centimeters
+(b) 2.69 cubic centimeters
+(c) 0.0595 cubic centimeters
+(d) 0.372 cubic centimeters
+(e) 1.60 cubic centimeters
+7.
+A cube of 1.2 inches on the side has a mass of 36 grams. What is the density in g/cm3?
+(a) 21
+(b) 2.2
+(c) 30.
+(d) 1.3
+(e) 14
+8.
+Nitric acid is a very important industrial chemical: 1.612 x 1010 pounds of it were produced in 1992. If the density of nitric acid is 12.53 pounds/gallon, what volume would be occupied by this quantity? (1 gallon = 3.7854 liters)
+(a) 7.646 x 1011 liters
+(b) 8.388 x 109 liters
+(c) 1.287 x 109 liters
+(d) 5.336 x 1010 liters
+(e) 4.870 x 109 liters
+9.
+Identify the INCORRECT statement.
+(a) Helium in a balloon: an element
+(b) Paint: a mixture
+(c) Tap water: a compound
+(d) Mercury in a barometer; an element
+10.
+An unused flashbulb contains magnesium and oxygen. After use, the contents are changed to magnesium oxide but the total mass does not change. This observation can best be explained by the
+(a) Law of Constant Composition.
+(b) Law of Multiple Proportions.
+(c) Avogadro's Law.
+(d) Law of Conservation of Mass.
+11.
+Which answer includes all the following that are chemical changes and not physical changes?
+I. freezing of water
+II. rusting of iron
+III. dropping a piece of iron into hydrochloric acid (H2 is produced)
+IV. burning a piece of wood
+V. emission of light by a kerosene oil lamp
+(a) III and IV
+(b) II and V
+(c) I, II, III, IV, and V
+(d) II, III, and V
+(e) II, III, IV, and V
+12.
+Which response lists all of the following properties of sulfur that are physical properties and not other properties?
+I. It reacts with hydrogen when heated.
+II. It is a yellow solid at room temperature.
+III. It is soluble in carbon disulfide.
+IV. Its density is 2.97 g/cubic centimeter
+V. It melts at 112�C.
+(a) II, III, IV, and V
+(b) II, IV, and V
+(c) I
+(d) II, III, and IV
+(e) III, IV, and V
