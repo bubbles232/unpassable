@@ -51,7 +51,7 @@ public String [][] sortAs (){
 	String[][]newA=new String[sortQs().size()][5];
 	for(int i=0; i<newA.length;i++) {
 		for(int j=0;j<newA[i].length;j++) {
-			newA[i][j]=answers.get(j+(i*5));
+			newA[i][j]=answers.get(j+(i*5) );
 		}
 	}
 	return newA;
