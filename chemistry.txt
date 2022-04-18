@@ -1,4 +1,4 @@
-﻿1.
+1.
 Of the following name/symbol combinations of elements, which one is WRONG?
 (a) uranium/U
 (b) sulfur/S
@@ -60,33 +60,25 @@ Identify the INCORRECT statement.
 (b) Paint: a mixture
 (c) Tap water: a compound
 (d) Mercury in a barometer; an element
+(e) None of these are incorrect.
 10.
 An unused flashbulb contains magnesium and oxygen. After use, the contents are changed to magnesium oxide but the total mass does not change. This observation can best be explained by the
 (a) Law of Constant Composition.
 (b) Law of Multiple Proportions.
 (c) Avogadro's Law.
 (d) Law of Conservation of Mass.
+(e) None of these explain.
 11.
 Which answer includes all the following that are chemical changes and not physical changes?
-I. freezing of water
-II. rusting of iron
-III. dropping a piece of iron into hydrochloric acid (H2 is produced)
-IV. burning a piece of wood
-V. emission of light by a kerosene oil lamp
-(a) III and IV
-(b) II and V
-(c) I, II, III, IV, and V
-(d) II, III, and V
-(e) II, III, IV, and V
+(a) dropping a piece of iron into hydrochloric acid (H2 is produced) and burning a piece of wood
+(b) rusting of iron and emission of light by a kerosene oil lamp
+(c) freezing of water, rusting of iron, dropping a piece of iron into hydrochloric acid (H2 is produced), burning a piece of wood, and emission of light by a kerosene oil lamp
+(d) rusting of iron, dropping a piece of iron into hydrochloric acid (H2 is produced), and emission of light by a kerosene oil lamp
+(e) rusting of iron, dropping a piece of iron into hydrochloric acid (H2 is produced), burning a piece of wood, and emission of light by a kerosene oil lamp
 12.
 Which response lists all of the following properties of sulfur that are physical properties and not other properties?
-I. It reacts with hydrogen when heated.
-II. It is a yellow solid at room temperature.
-III. It is soluble in carbon disulfide.
-IV. Its density is 2.97 g/cubic centimeter
-V. It melts at 112�C.
-(a) II, III, IV, and V
-(b) II, IV, and V
-(c) I
-(d) II, III, and IV
-(e) III, IV, and V
+(a) It is a yellow solid at room temperature, It is soluble in carbon disulfide, Its density is 2.97 g/cubic centimeter, and V
+(b) It is a yellow solid at room temperature, Its density is 2.97 g/cubic centimeter, and It melts at 112�C
+(c) It reacts with hydrogen when heated
+(d) It is a yellow solid at room temperature, It is soluble in carbon disulfide, and Its density is 2.97 g/cubic centimeter
+(e) It is soluble in carbon disulfide, Its density is 2.97 g/cubic centimeter, and It melts at 112�C
