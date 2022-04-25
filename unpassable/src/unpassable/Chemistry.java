@@ -36,7 +36,7 @@ public class Chemistry {
 		        String data2 = myReader2.nextLine();
          key.add(data2);
 		      }
-		      
+		   key.set(0, key.get(0).substring(3));
 		     
 		      myReader.close();
 		      } catch (FileNotFoundException e) {
@@ -63,12 +63,12 @@ public String [][] sortAs (){
 	return newA;
 }
 public int getCorrectAnsIn(int questionNum) {
-	int index=0;
+	int in=0;
 		for (int i = 0; i < sortAs()[questionNum].length; i++) {
-			if(sortAs()[questionNum][i].substring(0,3).equals(key.get(questionNum))) {
-				index=i;
+			if(sortAs()[questionNum][i].substring(0,3).equals(key.get(questionNum).trim())) {
+				in =i;
 		}
 	}
-		return index;
+		return in;
 }
 }
