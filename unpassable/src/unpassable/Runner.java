@@ -1,13 +1,26 @@
 package unpassable;
+
+import java.util.Iterator;
+
+import javax.swing.text.StyledEditorKit.ForegroundAction;
+
 public class Runner {
 	public static void main(String[] args) {
 		Chemistry c=new Chemistry();
 		c.scan();
-		System.out.println(c.sortAs()[2][0]);
-		System.out.println(" ");
-		for(int i=0; i<c.answers.size();i++) {
-		System.out.println(c.answers.get(i));}
-		System.out.println(c.sortQs().size());
+	System.out.println(c.getCorrectAnsIn(0));
+	Psych p = new Psych();
+	p.scan();
+	System.out.println(p.sortAs().length);
+	System.out.println(p.sortQs().size());
+	for(String[] row: p.sortAs())
+		for(String col :row) {
+	System.out.println(col);}
+	for (String s : p.sortQs()) {
+		System.out.println(s);
+		
 	}
+	}
+	
 
 }
