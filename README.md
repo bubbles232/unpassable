@@ -3,9 +3,9 @@
  
 ## Game Description
 
-`Unpassable` eeeeexxxxxppppllllaaaaiiinnn
+`Unpassable` is a game based off of Jeopardy. To play the game, one must select 'start', then a choose a subject to be quizzed on. As you answer the questions by clicking on the letter that corresponds to what you think is the right answer, your score is being kept. If your score is high enough, you will pass. Otherwise, you will fail.
 
- ![doodle](https://user-images.githubusercontent.com/29692869/148712423-0ca6cac4-67a4-40b6-9f73-1d3801277de5.gif)
+ ![doodle](start.gif)
 
  
 ## Usage
