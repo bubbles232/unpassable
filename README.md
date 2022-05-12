@@ -52,14 +52,14 @@ Objects are created individually or in arrays using loops.
 ![Create objects](https://user-images.githubusercontent.com/29692869/148715735-4f49494b-6cae-46a0-880c-982eedcc20b6.jpg)
 
 # Support
-Contact Swasti or Maya for support
+Contact Vianne, Swasti, or Maya for support
  
 # Roadmap
- Though an update is not likely, if it were to happen, disappearing platforms would be added in which after landing on the platform once, it would disappear. Another update would be the addition of a spring power up where an image of a spring would be on a platform. If the character lands on the spring, they will be boosted up multiple levels as a power up.
+ Though an update is not likely, if it were to happen, *suggestions to what we could do*
 
  
 # Contributing
  Anyone may contribute.
  
 # Authors and Acknowledgements
-The game is inspired from doodle jump. The background is from Doodle Jump. Other images and code were made by us. Thank you Mr. David for helping us with platform arrays and rectangle collisions.
+The game is inspired by Jeopardy. All images and code were made by us. Thank you Mr. David for helping us with XXXXXXXX.
