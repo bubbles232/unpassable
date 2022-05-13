@@ -42,7 +42,7 @@ XXXXXXX
 XXXXXX
  
 ### ***Game Over***
-XXXXXXXXXX
+The game is over when the player finishes all the questions. Based on the number of questions answered correctly, their score will be calculated. If they receive a 90% or higher, they will pass. If they receive below a 90%, they will fail.
 
 ### ***Paint***
 This will draw all of the images onto the screen.
@@ -51,11 +51,11 @@ This will draw all of the images onto the screen.
 Contact Vianne, Swasti, or Maya for support
  
 # Roadmap
- Though an update is not likely, if it were to happen, *suggestions to what we could do*
+ Though an update is not likely, if it were to happen, we would *suggestions to what we could do*
 
  
 # Contributing
  Anyone may contribute.
  
 # Authors and Acknowledgements
-The game is inspired by Jeopardy. All images and code were made by us. Thank you Mr. David for helping us with XXXXXXXX.
+The game is inspired by Jeopardy. All images and code were made by us. Thank you Mr. David for helping us read our question database files.
