@@ -3,7 +3,7 @@
  
 ## Game Description
 
-`Unpassable` is a game based off of Jeopardy. To play the game, one must select 'start', then a choose a subject to be quizzed on. As you answer the questions by clicking on the letter that corresponds to what you think is the right answer, your score is being kept. If your score is high enough, you will pass. Otherwise, you will fail.
+`Unpassable` is a game based off of Jeopardy. To play the game, one must select 'start', then a choose a subject to be quizzed on. Your options include Psychology, Chemistry, Japanese, and Music History. You will be presented with the question and answer choices. Click on the letter that corresponds to what you think is the right answer. If you are correct, you will gain a point. You do not lose any points for being incorrect. Your score will be kept track of and if your score is high enough, you will pass. Otherwise, you will fail.
 
  ![doodle](start.gif)
  ![doodle](subjects.gif)
@@ -11,7 +11,7 @@
  
 ## Usage
 
-  Mouse: use to click on answers
+  Mouse: use to click on start, subject and answers
 
 # Classes
 ### ***Chemistry***
