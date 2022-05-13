@@ -45,7 +45,7 @@ XXXXXX
 XXXXXXXXXX
 
 ### ***Paint***
-XXXXXXXXX
+This will draw all of the images onto the screen.
 
 # Support
 Contact Vianne, Swasti, or Maya for support
