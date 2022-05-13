@@ -27,7 +27,7 @@ This class presents the psychology questions and answer choices if the subject "
 ### ***Japanese***
 This class presents the japanese questions and answer choices if the subject "Japanese" is selected. When an answer is chosen, it checks the answer with the answer key, using an index to confirm the answer.
 
- <img src="https://github.com/bubbles232/unpassable/blob/main/psych.png" width="300" height="300">
+ <img src="https://github.com/bubbles232/unpassable/blob/main/japanese.png" width="300" height="300">
  
 ### ***Music History***
 This class presents the music history questions and answer choices if the subject "Music History" is selected. When an answer is chosen, it checks the answer with the answer key, using an index to confirm the answer.
