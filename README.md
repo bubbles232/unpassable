@@ -17,22 +17,22 @@
 ### ***Chemistry***
 This class presents the chemistry questions and answer choices if the subject "Chemistry" is selected. When an answer is chosen, it checks the answer with the answer key, using an index to confirm the answer.
 
-![]()
+![](chemistry.png)
 
 ### ***Psychology***
-This is for the slime character you are playing and can control. The slime was drawn by us and only one is created in frame.
+This class presents the psychology questions and answer choices if the subject "Psychology" is selected. When an answer is chosen, it checks the answer with the answer key, using an index to confirm the answer.
  
-![slime](https://user-images.githubusercontent.com/29692869/148712713-b920f53c-0f8c-4953-aa9a-1cfdf51d6d0a.png)
+![](psych.png)
 
 ### ***Japanese***
-This is for the platforms which the character jumps off of. An array is used to create 5 platforms on the screen in a random manner. One out of five platofrms move side to side. There are two classes concerning platforms as one platform is for jumping off and another one will reseult in the game to end. The platform that ends the game appears once for every five regualr platforms.
+This class presents the japanese questions and answer choices if the subject "Japanese" is selected. When an answer is chosen, it checks the answer with the answer key, using an index to confirm the answer.
 
-![pixil-frame-0 (6)](https://user-images.githubusercontent.com/29692869/148713120-6d2b88f3-192d-40e7-ac2d-8a133c9f586b.png)
+![](japanese.png)
  
 ### ***Music History***
-This is for the slime character you are playing and can control. The slime was drawn by us and only one is created in frame.
+This class presents the music history questions and answer choices if the subject "Music History" is selected. When an answer is chosen, it checks the answer with the answer key, using an index to confirm the answer.
  
-![slime](https://user-images.githubusercontent.com/29692869/148712713-b920f53c-0f8c-4953-aa9a-1cfdf51d6d0a.png)
+![](musichistory.png)
  
 # Methods
 ### ***Paint***
