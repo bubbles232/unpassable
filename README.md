@@ -17,7 +17,7 @@
 ### ***Chemistry***
 This class presents the chemistry questions and answer choices if the subject "Chemistry" is selected. When an answer is chosen, it checks the answer with the answer key, using an index to confirm the answer.
 
- <img src="https://github.com/bubbles232/unpassable/blob/main/psych.png" width="300" height="300">
+ <img src="https://github.com/bubbles232/unpassable/blob/main/chemistry.png" width="300" height="300">
  
 ### ***Psychology***
 This class presents the psychology questions and answer choices if the subject "Psychology" is selected. When an answer is chosen, it checks the answer with the answer key, using an index to confirm the answer.
