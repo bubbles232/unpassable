@@ -51,7 +51,11 @@ This will draw all of the images onto the screen.
 Contact Vianne, Swasti, or Maya for support
  
 # Roadmap
- Though an update is not likely, if it were to happen, we would *suggestions to what we could do*
+ Though an update is not likely, if it were to happen, we would 
+ - [ ] Add more subjects
+ - [ ] add timer
+ - [ ] add more sound effects
+ - [ ] add/improve graphics
 
  
 # Contributing
