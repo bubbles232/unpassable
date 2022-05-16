@@ -9,7 +9,7 @@
  ![doodle](subjects.gif)
 
  
-## Usage
+## How To Play
 
   Mouse: use to click on start, subject and answers
 
@@ -58,8 +58,8 @@ Contact Vianne, Swasti, or Maya for support
  - [ ] add/improve graphics
 
  
-# Contributing
- Anyone may contribute.
+# Contributing & Usage
+ Anyone may contribute or use the project to construct their own game.
  
 # Authors and Acknowledgements
 The game is inspired by Jeopardy. All images and code were made by us. Thank you Mr. David for helping us read our question database files.
