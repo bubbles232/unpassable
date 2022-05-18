@@ -1,43 +1,61 @@
 package unpassable;
 
-import java.awt.Color;
-import java.awt.Component;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.Toolkit;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.geom.AffineTransform;
 import java.net.URL;
 
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class GUI extends JFrame {
-	private JFrame frame;
-	private JPanel panel;
+/**
+ * @author 1861267
+ *
+ */
+public class GUI extends JPanel implements ActionListener {
 	private Image starting;
+private Image startButton;
 
-	private AffineTransform tx;
-	private int x;
+		private AffineTransform tx;private int x;
 	private int y;
-
+private JButton start;
+FlowLayout f = new FlowLayout();
+	/**
+	 * 
+	 */
 	public GUI() {
-		x = 110;
-		y = 110;
-		frame = new JFrame();
-		panel = new JPanel();
-		frame.add(panel);
+		x = 0;
+		y = 0;
+		JFrame frame = new JFrame("");
 		frame.setSize(500, 500);
-
+start = new JButton();
 		starting = Toolkit.getDefaultToolkit().getImage("start.gif");
+		startButton = Toolkit.getDefaultToolkit().getImage("start button.jpg");
+		f.addLayoutComponent("button1", start);
+		
+		ImageIcon b = new ImageIcon(startButton);
+		start.setIcon(b);
+	//	start.setBounds(0, 0,200, 100);
+		f.setAlignment(f.CENTER);
+		
 		frame.setResizable(false);
 		tx = AffineTransform.getTranslateInstance(x, y);
 		init(x, y);
-		panel.setVisible(true);
+		frame.add(this);
 		frame.setVisible(true);
+		this.add(start);
+		start.repaint();
+		this.repaint();
+		
+		
 	}
 
 	private Image getImage(String path) {
@@ -57,10 +75,12 @@ public class GUI extends JFrame {
 	}
 
 	private void update() {
-		tx.setToTranslation(x, y); // randomizing x value
+		tx.setToTranslation(x, y); 
 		tx.scale(1, 1);
-		frame.repaint();
-		panel.repaint();
+		repaint();
+		//start.prepareImage(startButton, null);
+		//start.setBounds(500, 300, 200, 100);
+		//start.setLocation(200, 200);
 	}
 
 	public static void main(String[] args) {
@@ -75,6 +95,8 @@ public class GUI extends JFrame {
 		
 		g2.drawImage(starting, x, y, this);
 		System.out.println("paints");
+		
+start.paint(g);
 
 		update();
 	}
@@ -85,5 +107,12 @@ public class GUI extends JFrame {
 
 	public void gameOver() {
 
+	}
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }
