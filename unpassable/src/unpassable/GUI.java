@@ -1,6 +1,7 @@
 package unpassable;
 
 import java.awt.BorderLayout;
+
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
@@ -10,6 +11,7 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 import java.awt.geom.AffineTransform;
 import java.net.URL;
 
@@ -29,6 +31,8 @@ import javax.swing.JPanel;
 public class GUI extends JPanel implements ActionListener {
 	private Image starting;
 private Image startButton;
+private Image startSubject;
+private boolean hello = true;
 
 		private AffineTransform tx;private int x;
 	private int y;
@@ -50,7 +54,7 @@ GridLayout grid = new GridLayout();
 
 		JFrame frame = new JFrame("");
 		frame.setSize(500, 500);
-start = new JButton();
+		start = new JButton();
 		starting = Toolkit.getDefaultToolkit().getImage("start.gif");
 		startButton = Toolkit.getDefaultToolkit().getImage("start button.jpg");
 		
@@ -71,6 +75,7 @@ start = new JButton();
 		tx = AffineTransform.getTranslateInstance(x, y);
 		init(x, y);
 		frame.add(this);
+		if(hello)
 		frame.setVisible(true);
 		southPanel.add(Box.createHorizontalGlue());
 		southPanel.add(start);
@@ -115,6 +120,8 @@ start = new JButton();
 		
 		
 		g2.drawImage(starting, x, y, this);
+		g2.drawImage(startSubject, x, y, this);
+
 		
 		
 
@@ -136,4 +143,20 @@ start = new JButton();
 		// TODO Auto-generated method stub
 		
 	}
+	
+	public void mouseClicked(MouseEvent e) {
+		x = e.getX();
+		y = e.getY();
+		int x2 =(int) start.getLocationOnScreen().getX();
+		int y2 = (int) start.getLocationOnScreen().getX();
+		int width = (int) start.getWidth();
+		int height = (int) start.getHeight();
+		System.out.println(width);
+		if (x>=x2 && x<=x2+width && y>=y2 && y<=y2+width) {
+			hello = false;
+			
+		
+		
+	}
+}
 }
