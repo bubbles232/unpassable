@@ -50,7 +50,7 @@ This will draw all of the images onto the screen.
 # Support
 Contact Vianne, Swasti, or Maya for support.
 
-Email us at: unpassable@gmail.com
+Email us at: unpassable2@gmail.com
  
 # Roadmap
  Though an update is not likely, if it were to happen, we would 
