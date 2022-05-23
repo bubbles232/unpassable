@@ -1,13 +1,14 @@
 package unpassable;
 
 import java.awt.BorderLayout;
-
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -31,16 +32,15 @@ import javax.swing.JPanel;
 public class GUI extends JPanel implements ActionListener {
 	private Image starting;
 private Image startButton;
-private Image startSubject;
-private boolean hello = true;
 
 		private AffineTransform tx;private int x;
 	private int y;
 private JButton start;
-
+private Image startSubject;
 //FlowLayout f = new FlowLayout();
 GridLayout grid = new GridLayout();
-	/**
+
+	/** 
 	 * 
 	 */
 	public GUI() {
@@ -49,37 +49,51 @@ GridLayout grid = new GridLayout();
 		
 		
 		//this.setLayout(new GridLayout(4,1));
-		JPanel southPanel = new JPanel();
-		        southPanel.setLayout(new BoxLayout(southPanel, BoxLayout.LINE_AXIS));
-
 		JFrame frame = new JFrame("");
 		frame.setSize(500, 500);
-		start = new JButton();
-		starting = Toolkit.getDefaultToolkit().getImage("start.gif");
-		startButton = Toolkit.getDefaultToolkit().getImage("start button.jpg");
+		JPanel southPanel = new JPanel();
+		
+		        southPanel.setLayout(new BoxLayout(southPanel, BoxLayout.LINE_AXIS));
+
+		    	starting = Toolkit.getDefaultToolkit().getImage("start.gif");
+				startButton = Toolkit.getDefaultToolkit().getImage("start button.jpg");
+		
+		ImageIcon 	b=new ImageIcon(startButton);
+		Image image = b.getImage(); // transform it 
+		Image newimg = image.getScaledInstance(475, 120,  java.awt.Image.SCALE_SMOOTH);
+		b.setImage(newimg);
+start = new JButton();
+start.setAlignmentY(CENTER_ALIGNMENT);
+start.setMaximumSize(new Dimension(b.getIconWidth(),b.getIconHeight()));
+
+
+	
 		
 		frame.add(southPanel,BorderLayout.SOUTH);
+		tx = AffineTransform.getTranslateInstance(x, y);
+		init(x, y);
 
-
-		ImageIcon 	b=new ImageIcon(startButton);
+	
 		
 		start.setIcon(b);
 		
-	
 		
-		southPanel.setSize(2, 0);
-		southPanel.setMaximumSize(getMaximumSize());
+		southPanel.setBackground(Color.black);
+	start.setBackground(Color.BLACK);
 		
-		System.out.println(start.getSize());
+		
+		
+		
+		
 		frame.setResizable(false);
-		tx = AffineTransform.getTranslateInstance(x, y);
-		init(x, y);
+	
 		frame.add(this);
-		if(hello)
 		frame.setVisible(true);
-		southPanel.add(Box.createHorizontalGlue());
-		southPanel.add(start);
 		
+	
+		//southPanel.add(Box.createHorizontalGlue());
+		southPanel.add(start);
+		start.addActionListener(this);
 		repaint();
 		
 		
@@ -91,7 +105,7 @@ GridLayout grid = new GridLayout();
 			URL imageURL = GUI.class.getResource(path);
 			tempImage = Toolkit.getDefaultToolkit().getImage(imageURL);
 		} catch (Exception e) {
-			e.printStackTrace();                                     
+			e.printStackTrace();
 		}
 		return tempImage;
 	}
@@ -120,8 +134,7 @@ GridLayout grid = new GridLayout();
 		
 		
 		g2.drawImage(starting, x, y, this);
-		g2.drawImage(startSubject, x, y, this);
-
+		g2.drawImage(startSubject,x,y,this);
 		
 		
 
@@ -136,6 +149,9 @@ GridLayout grid = new GridLayout();
 	public void gameOver() {
 
 	}
+
+
+	
 public Rectangle selectionOption(String sub) {
 		
 		//if(sub.equals("Music")) {
