@@ -136,12 +136,20 @@ GridLayout grid = new GridLayout();
 	public void gameOver() {
 
 	}
+public Rectangle selectionOption(String sub) {
+		
+		//if(sub.equals("Music")) {
+		return new Rectangle(21,202, 239-202,488-21);
+	}
 
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
+		if(e.getSource()==start) {
+			starting = Toolkit.getDefaultToolkit().getImage("subjects.gif").getScaledInstance(500,475,java.awt.Image.SCALE_SMOOTH);;
+			start.setVisible(false);
+		}
 	}
 	
 	public void mouseClicked(MouseEvent e) {
