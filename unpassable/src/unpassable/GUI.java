@@ -8,11 +8,14 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.MouseInfo;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
 import java.net.URL;
 
@@ -29,14 +32,16 @@ import javax.swing.JPanel;
  * @author 1861267
  *
  */
-public class GUI extends JPanel implements ActionListener {
+public class GUI extends JPanel implements ActionListener, MouseListener{
 	private Image starting;
 private Image startButton;
-
+private Image questionP;
 		private AffineTransform tx;private int x;
 	private int y;
 private JButton start;
 private Image startSubject;
+private boolean startScreen;
+private boolean questionScreen;
 //FlowLayout f = new FlowLayout();
 GridLayout grid = new GridLayout();
 
@@ -46,8 +51,9 @@ GridLayout grid = new GridLayout();
 	public GUI() {
 		x = 0;
 		y = 0;
-		
-		
+startScreen=true;
+questionScreen=false;
+		questionP= Toolkit.getDefaultToolkit().getImage("questions.png").getScaledInstance(500,475,java.awt.Image.SCALE_SMOOTH);
 		//this.setLayout(new GridLayout(4,1));
 		JFrame frame = new JFrame("");
 		frame.setSize(500, 500);
@@ -90,10 +96,11 @@ start.setMaximumSize(new Dimension(b.getIconWidth(),b.getIconHeight()));
 		frame.add(this);
 		frame.setVisible(true);
 		
-	
+	this.addMouseListener(this);
 		//southPanel.add(Box.createHorizontalGlue());
 		southPanel.add(start);
 		start.addActionListener(this);
+		 
 		repaint();
 		
 		
@@ -135,8 +142,8 @@ start.setMaximumSize(new Dimension(b.getIconWidth(),b.getIconHeight()));
 		
 		g2.drawImage(starting, x, y, this);
 		g2.drawImage(startSubject,x,y,this);
-		
-		
+		if(questionScreen) {
+		g2.drawImage(questionP,x,y,this);}
 
 
 		update();
@@ -153,9 +160,23 @@ start.setMaximumSize(new Dimension(b.getIconWidth(),b.getIconHeight()));
 
 	
 public Rectangle selectionOption(String sub) {
-		
-		//if(sub.equals("Music")) {
-		return new Rectangle(21,202, 239-202,488-21);
+	Rectangle subBoarder;
+		switch(sub) {
+		case "Music":
+			subBoarder= new Rectangle(21,115,(488-21) ,(200-115));
+			
+			break;
+		case "Japanese":
+			subBoarder= new Rectangle(21,115 + (200-115) + 5,(488-21) ,(200-115));
+			break;
+		case "Psych":
+			subBoarder=  new Rectangle(21,115 + ((200-115)*2) + 5,(488-21) ,(200-115));
+			break;
+			default :
+				subBoarder= new Rectangle(21,115 + ((200-115)*3) + 5,(488-21) ,(200-115));
+				break;
+		}
+		return subBoarder;
 	}
 
 
@@ -163,24 +184,56 @@ public Rectangle selectionOption(String sub) {
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource()==start) {
-			starting = Toolkit.getDefaultToolkit().getImage("subjects.gif").getScaledInstance(500,475,java.awt.Image.SCALE_SMOOTH);;
+			starting = Toolkit.getDefaultToolkit().getImage("subjects.gif").getScaledInstance(500,475,java.awt.Image.SCALE_SMOOTH);
 			start.setVisible(false);
+			startScreen=false;
 		}
 	}
-	
-	public void mouseClicked(MouseEvent e) {
-		x = e.getX();
-		y = e.getY();
-		int x2 =(int) start.getLocationOnScreen().getX();
-		int y2 = (int) start.getLocationOnScreen().getX();
-		int width = (int) start.getWidth();
-		int height = (int) start.getHeight();
-		System.out.println(width);
-		if (x>=x2 && x<=x2+width && y>=y2 && y<=y2+width) {
-			hello = false;
-			
-		
+	public void mouseClicked(MouseEvent m) {
+		int mouseX=m.getX();
+		int mouseY=m.getY();
+		System.out.println(mouseX + " " + mouseY);
+		if(startScreen==false) {
+		if (selectionOption("Music").contains(mouseX, mouseY)) {
+			starting = Toolkit.getDefaultToolkit().getImage("music history.png").getScaledInstance(500,475,java.awt.Image.SCALE_SMOOTH);
+			questionScreen=true;
+		}
+		else if (selectionOption("Psych").contains(mouseX, mouseY)) {
+			starting = Toolkit.getDefaultToolkit().getImage("music history.png").getScaledInstance(500,475,java.awt.Image.SCALE_SMOOTH);
+			questionScreen=true;
+		}
+		else if (selectionOption("Japenese").contains(mouseX, mouseY)) {
+			starting = Toolkit.getDefaultToolkit().getImage("japanese.png").getScaledInstance(500,475,java.awt.Image.SCALE_SMOOTH);
+			questionScreen=true;
+		}
+		else if (selectionOption("").contains(mouseX, mouseY)) {
+			System.out.println("mouse works");
+			questionScreen=true;
+		}
+		}
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		// TODO Auto-generated method stub
 		
 	}
-}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 }
