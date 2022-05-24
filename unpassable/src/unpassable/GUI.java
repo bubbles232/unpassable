@@ -1,3 +1,4 @@
+
 package unpassable;
 
 import java.awt.BorderLayout;
@@ -24,6 +25,7 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
@@ -43,6 +45,16 @@ private Image startSubject;
 private boolean startScreen;
 private boolean questionScreen;
 private boolean stop; 
+private Chemistry chem;
+private Psych psych;
+private Music mus;
+private Japanese jap;
+private JLabel questionL;
+private JButton ans1;
+private JButton ans2;
+private JButton ans3;
+private JButton ans4;
+private  int ansChoice;
 //FlowLayout f = new FlowLayout();
 GridLayout grid = new GridLayout();
 
@@ -55,10 +67,20 @@ GridLayout grid = new GridLayout();
 startScreen=true;
 questionScreen=false;
 stop = true; 
+chem = new Chemistry();
+psych = new Psych();
+mus= new Music();
+jap = new Japanese();
+ans1= new JButton();
+ans2= new JButton();
+ans3= new JButton();
+ans4= new JButton();
 		questionP= Toolkit.getDefaultToolkit().getImage("questions.png").getScaledInstance(500,475,java.awt.Image.SCALE_SMOOTH);
 		//this.setLayout(new GridLayout(4,1));
 		JFrame frame = new JFrame("");
 		frame.setSize(500, 500);
+		questionL=new JLabel("hello");
+		questionL.setVisible(true);
 		JPanel southPanel = new JPanel();
 		
 		        southPanel.setLayout(new BoxLayout(southPanel, BoxLayout.LINE_AXIS));
@@ -93,17 +115,20 @@ start.setMaximumSize(new Dimension(b.getIconWidth(),b.getIconHeight()));
 		
 		
 		
+		
 		frame.setResizable(false);
 	
 		frame.add(this);
 		frame.setVisible(true);
 		
+		
 	this.addMouseListener(this);
 		//southPanel.add(Box.createHorizontalGlue());
 		southPanel.add(start);
+		this.add(questionL);
 		start.addActionListener(this);
 		 
-		repaint();
+		this.repaint();
 		
 		
 	}
@@ -144,8 +169,12 @@ start.setMaximumSize(new Dimension(b.getIconWidth(),b.getIconHeight()));
 		
 		g2.drawImage(starting, x, y, this);
 		g2.drawImage(startSubject,x,y,this);
+		
 		if(questionScreen) {
-		g2.drawImage(questionP,x,y,this);}
+		g2.drawImage(questionP,x,y,this);
+		questionL.paint(g);
+		
+		}
 
 
 		update();
@@ -181,6 +210,40 @@ public Rectangle selectionOption(String sub) {
 		}
 		return subBoarder;
 	}
+public Rectangle ansOption(String ans) {
+	Rectangle ansBoarder;
+		switch(ans) {
+		case "a":
+			ansBoarder= new Rectangle(15,280,(127-10) ,(340-280));
+			break;
+		case "b":
+			ansBoarder= new Rectangle(15 + ((127-10)) + 3,280,(120-10) ,(350-280));
+			break;
+		case "c":
+			ansBoarder=  new Rectangle(15 + ((127-10)*2) + 3,280,(120-10) ,(350-280));
+			break;
+		default:
+			ansBoarder = new Rectangle(15 + ((127-10)*3) + 3,280,(120-10) ,(350-280));
+			
+		}
+		return ansBoarder;
+	}
+
+public String getNextQuestion(String sub,int index) {
+	String question="";
+	switch(sub) {
+	case "chem":
+		chem.sortQs().get(index);
+	case "psych":
+		psych.sortQs().get(index);
+	case "music":
+		mus.sortQs().get(index);
+	default:
+		jap.sortQs().get(index);
+		
+	}
+	return question;
+}
 
 
 	@Override
@@ -195,32 +258,59 @@ public Rectangle selectionOption(String sub) {
 	public void mouseClicked(MouseEvent m) {
 		int mouseX=m.getX();
 		int mouseY=m.getY();
+		int count=0;
 		System.out.println(mouseX + " " + mouseY);
 		if(startScreen==false) {
 		if (selectionOption("Music").contains(mouseX, mouseY) && stop) {
 			starting = Toolkit.getDefaultToolkit().getImage("music history.png").getScaledInstance(500,475,java.awt.Image.SCALE_SMOOTH);
 			questionScreen=true;
+			questionL.setVisible(true);
+			questionL.setBounds(100, 200, 200, 200);
+			questionL.setLocation(100, 200);
+			questionL.setText(getNextQuestion("music",0));
+			System.out.println(getNextQuestion("music",0));
 			stop = false;
 		}
 		else if (selectionOption("Psych").contains(mouseX, mouseY) && stop) {
 			starting = Toolkit.getDefaultToolkit().getImage("psych.png").getScaledInstance(500,475,java.awt.Image.SCALE_SMOOTH);
 			questionScreen=true;
 			stop = false;
+			
 		}
 		else if (selectionOption("Japanese").contains(mouseX, mouseY) && stop) {
 			starting = Toolkit.getDefaultToolkit().getImage("japanese.png").getScaledInstance(500,475,java.awt.Image.SCALE_SMOOTH);
 			questionScreen=true;
 			stop = false;
+			
 		}
 		else if (selectionOption("Chem").contains(mouseX, mouseY) && stop) {
 			starting = Toolkit.getDefaultToolkit().getImage("chemistry.png").getScaledInstance(500,475,java.awt.Image.SCALE_SMOOTH);
 			questionScreen=true;
 			stop = false;
+			
 		}
 		else if (selectionOption("").contains(mouseX, mouseY)) {
 			System.out.println("mouse works");
 			questionScreen=true;
 		}
+		}
+		if(questionScreen && !stop) {
+			if(ansOption("a").contains(mouseX, mouseY)) {
+				ansChoice=0;
+				count++;
+			}
+			else if(ansOption("b").contains(mouseX, mouseY)) {
+				ansChoice=1;
+				count++;
+			}
+			else if(ansOption("c").contains(mouseX, mouseY)) {
+				ansChoice=2;
+				count++;
+			}
+			else {
+				ansChoice=3;
+				count++;
+			}
 		}
 	}
 
