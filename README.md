@@ -46,6 +46,9 @@ The game is over when the player finishes all the questions. Based on the number
 
 ### ***Paint***
 This will draw all of the images onto the screen.
+ 
+### ***Reading Files***
+XXXXXX
 
 # Support
 Contact Vianne, Swasti, or Maya for support.
