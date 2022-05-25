@@ -1,11 +1,7 @@
 package unpassable;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -13,51 +9,44 @@ public class Japanese {
 	ArrayList <String> questions = new ArrayList<String>();
 	 ArrayList <String> answers = new ArrayList<String>();
 	 ArrayList <String> key = new ArrayList<String>();
-	
-	File aKey = new File ("psych key.txt") ;  
-	File m = new File("50 jpn q (1).txt");
+	File myObj = new File("Japan Questions.txt");
+	File aKey = new File ("Japan key.txt") ;  
 	public void scan() {
 	try {
-		FileInputStream myObj = new FileInputStream(m);
-		InputStreamReader read = new InputStreamReader(myObj,"UTF-8" );
+	      
 	      Scanner myReader = new Scanner(myObj);
 	      Scanner myReader2 = new Scanner(aKey);
-	    int  count =0;
+	      
 	  
 	      while (myReader.hasNextLine()) {
 	        String data = myReader.nextLine();
-	        
-System.out.println(data);
-	      if(count%5==0) {    	
-	        questions.add(data);
+
+	      if(data.substring(0,2).trim().equals("a.") || data.substring(0,2).trim().equals("b.") || data.substring(0,2).trim().equals("c.") || data.substring(0,2).trim().equals("d.")) {    	
+	        answers.add(data);
 	      }
 	      
-	      else{
-	    	  answers.add(data);
+	      else if(data.substring(data.length()-1).trim().equals("?") || data.substring(data.length()-1).trim().equals("?")|| data.substring(data.length()-1).trim().equals(".") ){
+	    	  questions.add(data);
 	      }
-	      count ++;
 	      }
 	      while (myReader2.hasNextLine()) {
 		        String data2 = myReader2.nextLine();
-       key.add(data2);
+        key.add(data2);
 		      }
 		   key.set(0, key.get(0).substring(3));
 		     
 		      myReader.close();
-//		      } catch (FileNotFoundException e) {
-//		      System.out.println("An error occurred.");
-//		      e.printStackTrace();
-		    } catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}}
+		      } catch (FileNotFoundException e) {
+		      System.out.println("An error occurred.");
+		      e.printStackTrace();
+		    }}
 	      
 
 public ArrayList <String> sortQs (){
 	ArrayList <String> newQ=new ArrayList<String>();
 	
-		for(int j =0; j<questions.size();j++) {
-			newQ.add( questions.get(j));
+		for(int j =0; j<questions.size()-1;j+=2) {
+			newQ.add( questions.get(j)+ questions.get(j+1));
 	}
 	return newQ;
 }
@@ -80,4 +69,3 @@ public int getCorrectAnsIn(int questionNum) {
 		return in;
 }
 }
-
