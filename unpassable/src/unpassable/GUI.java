@@ -313,6 +313,44 @@ public String getNextQuestion(String sub,int index) {
 			}
 		}
 	}
+	
+	public boolean rightAnswer() {
+		boolean result = false;
+		for (int i = 0; i < chem.getQLength(); i++) {
+		if (chem.getCorrectAnsIn(i) == ansChoice) {
+			result = true;
+		}
+		}
+		
+		for (int i = 0; i < psych.sortQs().size(); i++) {
+		if (psych.getCorrectAnsIn(i) == ansChoice) {
+			result = true;
+		}
+	}
+		for (int i = 0; i < jap.getQLength(); i++) {
+			if (jap.getCorrectAnsIn(i) == ansChoice) {
+				result = true;
+			}
+		}
+		
+		for (int i = 0; i < mus.sortQs().size(); i++) {
+			if (mus.getCorrectAnsIn(i) == ansChoice) {
+				result = true;
+			}
+		}
+		
+		return result; 
+	}
+	
+	public void Answer(MouseEvent r) {
+		if(rightAnswer()) {
+			starting = Toolkit.getDefaultToolkit().getImage("right.gif").getScaledInstance(500,475,java.awt.Image.SCALE_SMOOTH);
+		}
+		else {
+			starting = Toolkit.getDefaultToolkit().getImage("wrong.gif").getScaledInstance(500,475,java.awt.Image.SCALE_SMOOTH);
+		}
+		
+	}
 
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
