@@ -1,5 +1,4 @@
 
-
 package unpassable;
 
 import java.awt.BorderLayout;
@@ -45,6 +44,7 @@ public class GUI extends JPanel implements ActionListener, MouseListener {
 	private boolean startScreen;
 	private boolean questionScreen;
 	private boolean stop;
+	private boolean determine;
 	private Chemistry chem;
 	private Psych psych;
 	private Music mus;
@@ -54,6 +54,8 @@ public class GUI extends JPanel implements ActionListener, MouseListener {
 	private int ansChoice;
 	private JPanel southPanel;
 	private String question;
+	private int count;
+	
 //FlowLayout f = new FlowLayout();
 	GridLayout grid = new GridLayout();
 
@@ -78,14 +80,14 @@ public class GUI extends JPanel implements ActionListener, MouseListener {
 				java.awt.Image.SCALE_SMOOTH);
 		// this.setLayout(new GridLayout(4,1));
 		JFrame frame = new JFrame("");
-
+determine =false;
 		frame.setSize(500, 500);
 		this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 
 		questionL = new JLabel("hello");
 		questionBox = new JPanel();
 		southPanel = new JPanel();
-
+question = "";
 		questionBox.setLayout(new BoxLayout(questionBox, BoxLayout.PAGE_AXIS));
 		questionBox.add(questionL);
 		questionBox.setBackground(Color.black);
@@ -95,8 +97,8 @@ public class GUI extends JPanel implements ActionListener, MouseListener {
 		frame.add(questionBox, BorderLayout.CENTER);
 		frame.add(southPanel, BorderLayout.SOUTH);
 
-
-
+System.out.println(getNextQuestion("music",0));
+System.out.println(mus.sortQs().get(0));
 		southPanel.setLayout(new BoxLayout(southPanel, BoxLayout.LINE_AXIS));
 
 		starting = Toolkit.getDefaultToolkit().getImage("start.gif");
@@ -128,7 +130,7 @@ public class GUI extends JPanel implements ActionListener, MouseListener {
 		southPanel.add(start);
 
 		start.addActionListener(this);
-
+count=0;
 		this.repaint();
 		revalidate();
 
@@ -170,7 +172,7 @@ public class GUI extends JPanel implements ActionListener, MouseListener {
 		g2.drawImage(starting, x, y, this);
 		g2.drawImage(startSubject, x, y, this);
 
-		if (questionScreen) {
+		if (questionScreen &&determine ==false) {
 			g2.drawImage(questionP, x, y, this);
 		g.setColor(Color.BLACK);
 g.drawString(question,200, 200);
@@ -201,11 +203,12 @@ g.drawString(question,200, 200);
 		case "Psych":
 			subBoarder = new Rectangle(21, 115 + ((200 - 115) * 2) + 5, (488 - 21), (200 - 115));
 			break;
-		case "Chem":
-			subBoarder = new Rectangle(21, 115 + ((200 - 115) * 3), 488 - 21, 200 - 115);
 		default:
-			subBoarder = new Rectangle(21, 115 + ((200 - 115) * 3) + 5, (488 - 21), (200 - 115));
+			subBoarder = new Rectangle(21, 115 + ((200 - 115) * 3), 488 - 21, 200 - 115);
 			break;
+//		default:
+//			subBoarder = new Rectangle(21, 115 + ((200 - 115) * 3) + 5, (488 - 21), (200 - 115));
+//			break;
 		}
 		return subBoarder;
 	}
@@ -233,13 +236,13 @@ g.drawString(question,200, 200);
 		String question = "";
 		switch (sub) {
 		case "chem":
-			chem.sortQs().get(index);
+			question=chem.sortQs().get(0);
 		case "psych":
-			psych.sortQs().get(index);
+			question=psych.sortQs().get(index);
 		case "music":
-			mus.sortQs().get(index);
+			question=mus.sortQs().get(index);
 		default:
-			jap.sortQs().get(index);
+			question=jap.sortQs().get(index);
 
 		}
 		return question;
@@ -259,22 +262,23 @@ g.drawString(question,200, 200);
 	public void mouseClicked(MouseEvent m) {
 		int mouseX = m.getX();
 		int mouseY = m.getY();
-		int count = 0;
+		String sub="";
 		System.out.println(mouseX + " " + mouseY);
-		if (startScreen == false) {
+		if (!startScreen) {
 			if (selectionOption("Music").contains(mouseX, mouseY) && stop) {
 				starting = Toolkit.getDefaultToolkit().getImage("music history.png").getScaledInstance(500, 475,
 						java.awt.Image.SCALE_SMOOTH);
+				question= getNextQuestion("music", 1);
+				System.out.println(question);
+				stop = false;
+				sub= "mus";
 				questionScreen = true;
 				
-				question= getNextQuestion("music", 0);
-				repaint();
-				System.out.println(getNextQuestion("music", 0));
-				stop = false;
 			} else if (selectionOption("Psych").contains(mouseX, mouseY) && stop) {
 				starting = Toolkit.getDefaultToolkit().getImage("psych.png").getScaledInstance(500, 475,
 						java.awt.Image.SCALE_SMOOTH);
 				questionScreen = true;
+				sub="psych";
 				question= getNextQuestion("psych", 0);
 				stop = false;
 
@@ -283,35 +287,42 @@ g.drawString(question,200, 200);
 						java.awt.Image.SCALE_SMOOTH);
 				questionScreen = true;
 				question= getNextQuestion("jap", 0);
+				sub="jap";
 				stop = false;
 
 			} else if (selectionOption("Chem").contains(mouseX, mouseY) && stop) {
 				starting = Toolkit.getDefaultToolkit().getImage("chemistry.png").getScaledInstance(500, 475,
 						java.awt.Image.SCALE_SMOOTH);
 				questionScreen = true;
+				sub="chem";
 				question= getNextQuestion("chem", 0);
 				stop = false;
 
-			} else if (selectionOption("").contains(mouseX, mouseY)) {
-				System.out.println("mouse works");
-				questionScreen = true;
-			}
+			
 		}
-		if (questionScreen && !stop) {
+		else if (questionScreen && !stop) {
 			if (ansOption("a").contains(mouseX, mouseY)) {
 				ansChoice = 0;
 				count++;
+				Answer(m,sub);
+				determine =true;
 			} else if (ansOption("b").contains(mouseX, mouseY)) {
 				ansChoice = 1;
 				count++;
+				Answer(m,sub);
+				determine=true;
 			} else if (ansOption("c").contains(mouseX, mouseY)) {
 				ansChoice = 2;
 				count++;
+			Answer(m,sub);
+			determine=true;
 			} else {
 				ansChoice = 3;
 				count++;
+				Answer(m,sub);
+				determine=true;
 			}
-		}
+		}}
 	}
 
 	@Override
@@ -337,41 +348,43 @@ g.drawString(question,200, 200);
 		// TODO Auto-generated method stub
 
 	}
-}
 	
-	public boolean rightAnswer() {
+	public boolean rightAnswer(String sub) {
 		boolean result = false;
-		for (int i = 0; i < chem.getQLength(); i++) {
-		if (chem.getCorrectAnsIn(i) == ansChoice) {
+		switch(sub) {
+			case "chem":
+		if(count<chem.sortQs().size()) {
+		if (chem.getCorrectAnsIn(count) == ansChoice) {
 			result = true;
-		}
-		}
-		
-		for (int i = 0; i < psych.sortQs().size(); i++) {
-		if (psych.getCorrectAnsIn(i) == ansChoice) {
-			result = true;
-		}
-	}
-		for (int i = 0; i < jap.getQLength(); i++) {
-			if (jap.getCorrectAnsIn(i) == ansChoice) {
+		}}
+		break;
+			case "psych":
+		if(count<psych.sortQs().size()) {
+			if (chem.getCorrectAnsIn(count) == ansChoice) {
 				result = true;
-			}
-		}
-		
-		for (int i = 0; i < mus.sortQs().size(); i++) {
-			if (mus.getCorrectAnsIn(i) == ansChoice) {
+			}}
+		break;
+			case "jap":
+		if(count<chem.sortQs().size()) {
+				if (chem.getCorrectAnsIn(count) == ansChoice) {
+					result = true;
+				}}
+		break;
+			default:
+		if(count<chem.sortQs().size()) {
+			if (chem.getCorrectAnsIn(count) == ansChoice) {
 				result = true;
-			}
-		}
-		
+			}}
+		break;}
 		return result; 
 	}
 	
-	public void Answer(MouseEvent r) {
-		if(rightAnswer()) {
+	public void Answer(MouseEvent r, String sub) {
+		if(rightAnswer(sub)) {
 			starting = Toolkit.getDefaultToolkit().getImage("right.gif").getScaledInstance(500,475,java.awt.Image.SCALE_SMOOTH);
 		}
 		else {
 			starting = Toolkit.getDefaultToolkit().getImage("wrong.gif").getScaledInstance(500,475,java.awt.Image.SCALE_SMOOTH);
 		}
 	}
+}
