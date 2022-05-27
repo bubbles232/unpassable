@@ -48,7 +48,7 @@ The game is over when the player finishes all the questions. Based on the number
 This will draw all of the images onto the screen.
  
 ### ***Reading Files***
-XXXXXX
+There are files that provide the game with questions to quiz the player. To transfer the questions from the file to be part of the game, the files must be read and to do so, we created this method.
 
 # Support
 Contact Vianne, Swasti, or Maya for support.
