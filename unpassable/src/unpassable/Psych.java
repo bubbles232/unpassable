@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Psych {
-	ArrayList <String> questions = new ArrayList<String>();
+	 ArrayList <String> questions = new ArrayList<String>();
 	 ArrayList <String> answers = new ArrayList<String>();
 	 ArrayList <String> key = new ArrayList<String>();
 	File myObj = new File("psychology.txt");
@@ -21,17 +21,17 @@ public class Psych {
 	      while (myReader.hasNextLine()) {
 	        String data = myReader.nextLine();
 
-	      if(data.substring(0,2).trim().equals("a.") || data.substring(0,2).trim().equals("b.") || data.substring(0,2).trim().equals("c.") || data.substring(0,2).trim().equals("d.")) {    	
+	      if(data.substring(0,1).equals("(")) {    	
 	        answers.add(data);
 	      }
 	      
-	      else if(data.substring(data.length()-1).trim().equals(":") || data.substring(data.length()-1).trim().equals("?")|| data.substring(data.length()-1).trim().equals(".") ){
+	      else{
 	    	  questions.add(data);
 	      }
 	      }
 	      while (myReader2.hasNextLine()) {
 		        String data2 = myReader2.nextLine();
-        key.add(data2);
+         key.add(data2);
 		      }
 		   key.set(0, key.get(0).substring(3));
 		     
@@ -51,10 +51,10 @@ public ArrayList <String> sortQs (){
 	return newQ;
 }
 public String [][] sortAs (){
-	String[][]newA=new String[sortQs().size()][4];
+	String[][]newA=new String[sortQs().size()][5];
 	for(int i=0; i<newA.length;i++) {
 		for(int j=0;j<newA[i].length;j++) {
-			newA[i][j]=answers.get(j+(i*4) );
+			newA[i][j]=answers.get(j+(i*5) );
 		}
 	}
 	return newA;
