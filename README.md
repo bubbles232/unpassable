@@ -55,7 +55,7 @@ Sorts answers into its correct subject.
  
 ### ***Selection Option***
 Creates buttons for the answer options on the screen.
- 
+  <img src="https://github.com/bubbles232/unpassable/blob/main/Select%20opt.png" width="300" height="300">
 
 # Support
 Contact Vianne, Swasti, or Maya for support.
