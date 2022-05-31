@@ -33,7 +33,7 @@ public class Japanese {
 			        String data2 = myReader2.nextLine();
 	         key.add(data2);
 			      }
-			   key.set(0, key.get(0).substring(3));
+			   key.set(0, "a");
 			     
 			      myReader.close();
 			      } catch (FileNotFoundException e) {
@@ -51,21 +51,21 @@ public class Japanese {
 		return newQ;
 	}
 	public String [][] sortAs (){
-		String[][]newA=new String[sortQs().size()][5];
+		String[][]newA=new String[sortQs().size()][4];
 		for(int i=0; i<newA.length;i++) {
 			for(int j=0;j<newA[i].length;j++) {
-				newA[i][j]=answers.get(j+(i*5) );
+				newA[i][j]=answers.get(j+(i*4) );
 			}
 		}
 		return newA;
 	}
-	public int getCorrectAnsIn(int questionNum) {
-		int in=0;
-			for (int i = 0; i < sortAs()[questionNum].length; i++) {
-				if(sortAs()[questionNum][i].substring(0,3).equals(key.get(questionNum).trim())) {
-					in =i;
+	public String getCorrectAnsIn(int questionNum) throws FileNotFoundException {
+		String answer = "";
+		for (int i = 0; i < 13; i++) {
+			if (i == questionNum) {
+				answer = key.get(i);
 			}
 		}
-			return in;
+		return answer;
 	}
 	}
