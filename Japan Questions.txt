@@ -1,125 +1,150 @@
-1. Japan is made up of islands. How many islands does Japan have in total?
-a. 6852
-b. 380
-c. 6
-d. 5431
-2. What is a traditional Japanese inn called?
-a. Ryokan
-b. Onsen
-c. Capsule
-d. hanok
-3. We all know Tokyo is the largest city in terms of population, but where is the second biggest?
-a. Kyoto
-b. Osaka
-c. Yokohama
-d. nagoya
-4. Japan has a total population of approx. 127 million, but which European country is similar in size according to landmass?
-a. France
-b. Germany
-c. Spain
-d. uk
-5. Before Tokyo, Japan had several other capital cities. Which is the most recent previous capital?
-a. Hiroshima
-b. Osaka
-c. Kyoto
-d. fukuoka
-6. How tall is the iconic Mount Fuji?
-a. 3776m
-b. 3776m
-c. 2893m
-d. 2893m
-7. Few original castles remain from the Edo period of 1603 to 1868. How many still exist today?
-a. 8
-b. 12
-c. 19
-d. 23
-8. Kyoto is famous for its stunning geisha. But what does the word geisha actually translate to?
-a. Person of art
-b. Doll performer
-c. Woman of art
-d. Woman of dance
-9. Japan is an up-and-coming hiking haven, but which of these timeless walking trails is over 1,000 years old?
-a. Kumano kodo
-b. Nakasendo way
-c. Shinmanamikaido
-d. Shinetsu trail
-10. What is the top operational speed of the Shinkansen aka The Bullet train?
-a. 400 kmph
-b. 320 kmph
-c. 200 kmph
-d. 260 kmph
-11. Japan is renowned for its incredible food. Which city is nicknamed the kitchen of Japan?
-a. Kobe
-b. Fukuoka
-c. Nagasaki
-d. osaka
-12. Which quintessentially Japanese dish actually originates from Portugal?
-a. Sushi
-b. Okonomiyaki
-c. Ramen
-d. tempura
-13. Which sacred animal is known for wandering through Nara Park?
-a. Gazelle
-b. Deer
-c. Red squirrel
-d. horse
-14. Hokkaido has red-crowned cranes that are iconic. In which part of the island can they be seen all year round?
-a. Shiretoko peninsula
-b. Kushiro marshland
-c. Akan-nashu national park
-d. Not in hokkaido
-15. In which prefecture can you find the hot spring-bathing Japanese macaque aka snow monkey?
-a. Ishikawa
-b. kagoshima
-c. Okinawa
-d. nagano
-16. In which region would you find the city of Sendai?
-a. Honshu
-b. Chugoku
-c. Tohoku
-d. shikoku
-17. In which Japanese town would you find this Buddha statue?
-a. Gifu
-b. Kamakura
-c. Nara
-d. harajuku
-18. When did the beloved Studio Ghibli Museum in Mitaka open?
-a. 1998
-b. 2001
-c. 2003
-d. 2007
-19. How many vending machines are there in Japan?
-a. 4 million
-b. 500k
-c. 2.5 million
-d. 15,268
-20. How many subway stations are there in Tokyo?
-a. 50
-b. 23
-c. 185
-d. 220
-21. How much of Japan is forest?
-a. 15%
-b. 67%
-c. 39%
-d. 50%
-22. How is okonomiyaki cooked?
-a. Its not
-b. With a teppan
-c. Fried
-d. Smoked
-23. Which number is considered unlucky in Japan?
-a. 2
-b. 4
-c. 8
-d. 5
-24. What is Japan's northernmost island?
-a. Okinawa
-b. Aoshima
-c. Hokkaido
-d. Saitama
-25. What was Tokyo originally called?
-a. Nikko
-b. Edo
-c. Tachikawa
-d. Mie
+1. 
+What is pop music in Japan called?
+(a) Jpop
+(b) Kpop
+(c) Cpop
+(d) Pop
+2.
+What is a traditional Japanese inn called?
+(a) Ryokan
+(b) Onsen
+(c) Capsule
+(d) hanok
+3. 
+We all know Tokyo is the largest city in terms of population, but where is the second biggest?
+(a) Kyoto
+(b) Osaka
+(c) Yokohama
+(d) nagoya
+4. 
+Japan has a total population of approx. 127 million, but which European country is similar in size according to landmass?
+(a) France
+(b) Germany
+(c) Spain
+(d) uk
+5. 
+Before Tokyo, Japan had several other capital cities. Which is the most recent previous capital?
+(a) Hiroshima
+(b) Osaka
+(c) Kyoto
+(d) fukuoka
+6. 
+How tall is the iconic Mount Fuji?
+(a) 3776m
+(b) 3776m
+(c) 2893m
+(d) 2893m
+7. 
+Few original castles remain from the Edo period of 1603 to 1868. How many still exist today?
+(a) 8
+(b) 12
+(c) 19
+(d) 23
+8. 
+Kyoto is famous for its stunning geisha. But what does the word geisha actually translate to?
+(a) Person of art
+(b) Doll performer
+(c) Woman of art
+(d) Woman of dance
+9. 
+Japan is an up-and-coming hiking haven, but which of these timeless walking trails is over 1,000 years old?
+(a) Kumano kodo
+(b) Nakasendo way
+(c) Shinmanamikaido
+(d) Shinetsu trail
+10. 
+What is the top operational speed of the Shinkansen aka The Bullet train?
+(a) 400 kmph
+(b) 320 kmph
+(c) 200 kmph
+(d) 260 kmph
+11. 
+Japan is renowned for its incredible food. Which city is nicknamed the kitchen of Japan?
+(a) Kobe
+(b) Fukuoka
+(c) Nagasaki
+(d) osaka
+12. 
+Which quintessentially Japanese dish actually originates from Portugal?
+(a) Sushi
+(b) Okonomiyaki
+(c) Ramen
+(d) tempura
+13. 
+Which sacred animal is known for wandering through Nara Park?
+(a) Gazelle
+(b) Deer
+(c) Red squirrel
+(d) horse
+14. 
+Hokkaido has red-crowned cranes that are iconic. In which part of the island can they be seen all year round?
+(a) Shiretoko peninsula
+(b) Kushiro marshland
+(c) Akan-nashu national park
+(d) Not in hokkaido
+15. 
+In which prefecture can you find the hot spring-bathing Japanese macaque aka snow monkey?
+(a) Ishikawa
+(b) kagoshima
+(c) Okinawa
+(d) nagano
+16. 
+In which region would you find the city of Sendai?
+(a) Honshu
+(b) Chugoku
+(c) Tohoku
+(d) shikoku
+17. 
+In which Japanese town would you find this Buddha statue?
+(a) Gifu
+(b) Kamakura
+(c) Nara
+(d) harajuku
+18. 
+When did the beloved Studio Ghibli Museum in Mitaka open?
+(a) 1998
+(b) 2001
+(c) 2003
+(d) 2007
+19. 
+How many vending machines are there in Japan?
+(a) 4 million
+(b) 500k
+(c) 2.5 million
+(d) 15,268
+20. 
+How many subway stations are there in Tokyo?
+(a) 50
+(b) 23
+(c) 185
+(d) 220
+21. 
+How much of Japan is forest?
+(a) 15%
+(b) 67%
+(c) 39%
+(d) 50%
+22. 
+How is okonomiyaki cooked?
+(a) Its not
+(b) With a teppan
+(c) Fried
+(d) Smoked
+23. 
+Which number is considered unlucky in Japan?
+(a) 2
+(b) 4
+(c) 8
+(d) 5
+24. 
+What is Japan's northernmost island?
+(a) Okinawa
+(b) Aoshima
+(c) Hokkaido
+(d) Saitama
+25. 
+What was Tokyo originally called?
+(a) Nikko
+(b) Edo
+(c) Tachikawa
+(d) Mie
