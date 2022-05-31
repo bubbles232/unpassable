@@ -36,10 +36,10 @@ This class presents the music history questions and answer choices one at a time
  
 # Methods
 ### ***Start***
-XXXXXXX
+The game starts once the start button is clicked and leads to a subject selection page.
 
-### ***Clicking***
-XXXXXX
+### ***Mouse Clicked***
+Whenever the mouse is clicked on the screen or a button, the screen changes to a different screen
  
 ### ***Game Over***
 The game is over when the player finishes all the questions. Based on the number of questions answered correctly, their score will be calculated. If they receive a 90% or higher, they will pass. If they receive below a 90%, they will fail.
@@ -49,6 +49,13 @@ This will draw all of the images onto the screen.
  
 ### ***Reading Files***
 There are files that provide the game with questions to quiz the player. To transfer the questions from the file to be part of the game, the files must be read and to do so, we created this method.
+
+### ***answer***
+Sorts answers into its correct subject.
+ 
+### ***Selection Option***
+Creates buttons for the answer options on the screen.
+ 
 
 # Support
 Contact Vianne, Swasti, or Maya for support.
