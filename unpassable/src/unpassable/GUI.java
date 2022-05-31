@@ -245,10 +245,12 @@ public class GUI extends JPanel implements ActionListener, MouseListener {
 			g2.drawImage(questionP, x, y, this);
 		g2.setColor(Color.BLACK);
 		g2.drawString(question,25, 100);
+		g2.drawString(" " + score, 200, 100);
 		int adds = 0; 
 		for (int i = 0; i < 4; i++) {
 			g2.drawString(answer[i], 25+adds, 200);
 			adds += 130;
+			
 		}
 		
 		}
