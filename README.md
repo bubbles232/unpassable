@@ -46,6 +46,9 @@ The game is over when the player finishes all the questions. Based on the number
 
 ### ***Paint***
 This will draw all of the images onto the screen.
+
+<img src="https://github.com/bubbles232/unpassable/blob/d1cda0b7da7054f753e15c66b0ca5b2d2b9d3219/Paint.jpg" width="300" height="300">
+ 
  
 ### ***Reading Files***
 There are files that provide the game with questions to quiz the player. To transfer the questions from the file to be part of the game, the files must be read and to do so, we created this method.
