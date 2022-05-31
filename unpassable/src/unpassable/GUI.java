@@ -73,6 +73,8 @@ public class GUI extends JPanel implements ActionListener, MouseListener {
 	JFrame frame = new JFrame("");
 	private MouseEvent r; 
 	private int wr;
+	private int wrongs; 
+	private int score;
 	
 //FlowLayout f = new FlowLayout();
 	GridLayout grid = new GridLayout();
@@ -84,6 +86,7 @@ public class GUI extends JPanel implements ActionListener, MouseListener {
 	public GUI() throws FileNotFoundException {
 		x = 0;
 		y = 0;
+		score = 0;
 		startScreen = true;
 		questionScreen = false;
 		stop = true;
@@ -185,9 +188,7 @@ public class GUI extends JPanel implements ActionListener, MouseListener {
 	private void update() {
 		tx.setToTranslation(x, y);
 		tx.scale(1, 1);
-
 		repaint();
-
 	}
 
 	public static void main(String[] args) throws FileNotFoundException {
@@ -210,17 +211,20 @@ public class GUI extends JPanel implements ActionListener, MouseListener {
 			  if(questionScreen) {
 				  removeAll();
 			  g2.drawImage(questionP, x, y, this);
+			  if (count < getQuestion(sub)) {
 			  g2.drawString(getNextQuestion(sub, count),25, 100);
+			  }
 			  removeAll();
 			  
 			  
 			  
 			
 			int add = 0;
+			//int addY = 0;
 			  for (int i = 0; i < 4; i++) { 
 				  String[] answers = getNextAnswers(sub,count);
-					g2.drawString(answers[i], 25+add, 200);
-					add += 130;
+					g2.drawString(answers[i], 25, 150+add);
+					add += 30;
 				}
 			  }
 	
@@ -254,7 +258,6 @@ public class GUI extends JPanel implements ActionListener, MouseListener {
 	}
 
 	public void start() {
-
 	}
 
 	public void gameOver() {
@@ -390,7 +393,23 @@ public class GUI extends JPanel implements ActionListener, MouseListener {
 		}
 	}
 	
-	
+	public int getQuestion(String sub) {
+		int finalled = 0; 
+		if(sub.equals("chem")) {
+			
+			finalled = chem.sortQs().size();
+		}
+		if(sub.equals("mus")) {
+			finalled = mus.sortQs().size();
+		}
+		if(sub.equals("jap")) {
+			finalled = jap.sortQs().size();
+		}
+		else {
+			finalled = psych.sortQs().size();
+		}
+		return finalled;
+	}
 
 	public void mouseClicked(MouseEvent m) {
 		int mouseX = m.getX();
@@ -451,38 +470,43 @@ public class GUI extends JPanel implements ActionListener, MouseListener {
 			
 		}
 		else if (questionScreen && !stop) {
-			if (ansOption("a").contains(mouseX, mouseY)) {
-				ansChoice = "a";
-				try {
-					Answer(sub);
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+			if(count>=getQuestion(sub)-1) {
+				if(win()==true) {
+					questionScreen = false;
+					starting = Toolkit.getDefaultToolkit().getImage("pass.gif").getScaledInstance(500, 475,
+							java.awt.Image.SCALE_SMOOTH);
+					
+					//endGame=true;
 				}
-				determine =true;
-				count++;
-			} else if (ansOption("b").contains(mouseX, mouseY)) {
-				ansChoice = "b";
-				try {
-					Answer(sub);
-				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				determine=true;
-				count++;
-			} else if (ansOption("c").contains(mouseX, mouseY)) {
-				ansChoice = "c";
-			try {
-				Answer(sub);
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				questionScreen = false;
+				starting = Toolkit.getDefaultToolkit().getImage("fail.gif").getScaledInstance(500, 475,
+						java.awt.Image.SCALE_SMOOTH);
 			}
-			determine=true;
-			count++;
-			} else if (ansOption("d").contains(mouseX, mouseY)) {
-				ansChoice = "d";
+				//endGame=true;}
+				else {
+
+					if (ansOption("a").contains(mouseX, mouseY)) {
+					ansChoice = "a";
+					try {
+						Answer(sub);
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					determine =true;
+					count++;
+				} else if (ansOption("b").contains(mouseX, mouseY)) {
+					ansChoice = "b";
+					try {
+						Answer(sub);
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					determine=true;
+					count++;
+				} else if (ansOption("c").contains(mouseX, mouseY)) {
+					ansChoice = "c";
 				try {
 					Answer(sub);
 				} catch (FileNotFoundException e) {
@@ -491,6 +515,16 @@ public class GUI extends JPanel implements ActionListener, MouseListener {
 				}
 				determine=true;
 				count++;
+				} else if (ansOption("d").contains(mouseX, mouseY)) {
+					ansChoice = "d";
+					try {
+						Answer(sub);
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					determine=true;
+					count++;
 			}
 			this.repaint();
 			revalidate();
@@ -506,6 +540,7 @@ public class GUI extends JPanel implements ActionListener, MouseListener {
 			this.repaint();
 			revalidate();
 		}}
+		}
 	}
 
 	@Override
@@ -532,6 +567,37 @@ public class GUI extends JPanel implements ActionListener, MouseListener {
 
 	}
 	
+	
+	public boolean win() {
+		boolean won;
+		if(sub.equals("chem")) {
+			if ((double)score/chem.sortQs().size()>0.9  ) {
+				won =true;
+			}
+			won=false;
+		}
+		else if (sub.equals("psych")) {
+			if ((double)score/psych.sortQs().size()>0.9  ) {
+				won =true;
+			}
+			won=false;
+		}
+		else if (sub.equals("jap")) {
+			if ((double)score/jap.sortQs().size()>0.9  ) {
+				won =true;
+			}
+			won=false;
+		}
+		else {
+			if ((double)score/mus.sortQs().size()>0.9  ) {
+				won =true;
+			}
+			won=false;
+		}
+			return won;
+	}
+
+
 	public boolean rightAnswer(String sub) throws FileNotFoundException {
 	
 		boolean result = false;
@@ -571,6 +637,50 @@ public class GUI extends JPanel implements ActionListener, MouseListener {
 		return result; 
 		
 	}
+	/*
+	public void theEnd() {
+	
+		if (wrongs <2 && Ending(sub)) {
+			starting = Toolkit.getDefaultToolkit().getImage("pass.gif").getScaledInstance(500,475,java.awt.Image.SCALE_SMOOTH);
+			//right = Toolkit.getDefaultToolkit().getImage("pass.gif").getScaledInstance(500,475,java.awt.Image.SCALE_SMOOTH);
+
+		}
+		else {
+			starting = Toolkit.getDefaultToolkit().getImage("fail.gif").getScaledInstance(500,475,java.awt.Image.SCALE_SMOOTH);
+		//	right = Toolkit.getDefaultToolkit().getImage("pass.gif").getScaledInstance(500,475,java.awt.Image.SCALE_SMOOTH);
+
+		}
+		
+	}
+	
+	public boolean Ending(String sub) {
+		boolean answer = false;
+		switch (sub) {
+		case "chem":
+			if (count+2 == chem.sortQs().size()) {
+				answer = true;
+			}
+			break;
+		case "psych":
+			if (count+2 == psych.sortQs().size()) {
+				answer = true;
+			}
+			break;
+		case "mus":
+			if (count+2 == mus.sortQs().size()) {
+				answer = true;
+			}
+			break;
+		default:
+			if (count+2 == jap.sortQs().size()) {
+				answer = true;
+			}
+			break;
+		}
+		
+		return answer;
+	}
+	*/
 	
 	
 	public void Answer(String sub) throws FileNotFoundException {
@@ -585,7 +695,10 @@ public class GUI extends JPanel implements ActionListener, MouseListener {
 		else if (!rightAnswer(sub)){
 			wrong = Toolkit.getDefaultToolkit().getImage("wrong.gif").getScaledInstance(500,475,java.awt.Image.SCALE_SMOOTH);
 			wr=1;
+			wrongs++;
 		}
+		
+		
 		
 		
 		/*
