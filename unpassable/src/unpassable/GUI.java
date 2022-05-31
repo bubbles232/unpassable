@@ -15,7 +15,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
+import java.io.FileNotFoundException;
 import java.net.URL;
+import java.time.Duration;
+import java.time.Instant;
+import java.util.ArrayList;
 //import java.util.Timer;
 import java.util.TimerTask;
 
@@ -50,9 +54,10 @@ public class GUI extends JPanel implements ActionListener, MouseListener {
 	private Japanese jap;
 	private JLabel questionL;
 	private JPanel questionBox;
-	private int ansChoice;
+	private String ansChoice;
 	private JPanel southPanel;
 	private String question;
+	private String[] answer;
 	private int count; 
 	//private Timer t; 
 	private int valMusic = 0;
@@ -63,14 +68,20 @@ public class GUI extends JPanel implements ActionListener, MouseListener {
 	private Rectangle screen;
 	public Image right;
 	public Image wrong;
+	private String sub = "";
+	private boolean answered;
+	JFrame frame = new JFrame("");
+	private MouseEvent r; 
+	private int wr;
 	
 //FlowLayout f = new FlowLayout();
 	GridLayout grid = new GridLayout();
-
-	/** 
+	
+	/**
+	 * @throws FileNotFoundException  
 	 * 
 	 */
-	public GUI() {
+	public GUI() throws FileNotFoundException {
 		x = 0;
 		y = 0;
 		startScreen = true;
@@ -80,6 +91,7 @@ public class GUI extends JPanel implements ActionListener, MouseListener {
 		psych = new Psych();
 		mus = new Music();
 		jap = new Japanese();
+		answered = false;
 		chem.scan();
 		mus.scan();
 		psych.scan();
@@ -87,7 +99,7 @@ public class GUI extends JPanel implements ActionListener, MouseListener {
 		questionP = Toolkit.getDefaultToolkit().getImage("questions.png").getScaledInstance(500, 475,
 				java.awt.Image.SCALE_SMOOTH);
 		// this.setLayout(new GridLayout(4,1));
-		JFrame frame = new JFrame("");
+		
 		determine =false;
 		frame.setSize(500, 500);
 		this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
@@ -105,14 +117,14 @@ public class GUI extends JPanel implements ActionListener, MouseListener {
 		frame.add(questionBox, BorderLayout.CENTER);
 		frame.add(southPanel, BorderLayout.SOUTH);
 		
-		System.out.println(getNextQuestion("music",0));
-		System.out.println(mus.sortQs().get(0));
+		System.out.println(chem.getCorrectAnsIn(2));
+		
 		southPanel.setLayout(new BoxLayout(southPanel, BoxLayout.LINE_AXIS));
 
 		starting = Toolkit.getDefaultToolkit().getImage("start.gif");
 		startButton = Toolkit.getDefaultToolkit().getImage("start button.jpg");
-		right = Toolkit.getDefaultToolkit().getImage("right.gif").getScaledInstance(500,475,java.awt.Image.SCALE_SMOOTH);
-		wrong = Toolkit.getDefaultToolkit().getImage("wrong.gif").getScaledInstance(500,475,java.awt.Image.SCALE_SMOOTH);
+		right = Toolkit.getDefaultToolkit().getImage("");
+		wrong = Toolkit.getDefaultToolkit().getImage("");
 
 		ImageIcon b = new ImageIcon(startButton);
 		Image image = b.getImage(); // transform it
@@ -147,8 +159,9 @@ public class GUI extends JPanel implements ActionListener, MouseListener {
 		count=0;
 		this.repaint();
 		revalidate();
-		
-		System.out.println(mus.getCorrectAnsIn(3));
+
+	
+
 		
 
 	}
@@ -177,23 +190,65 @@ public class GUI extends JPanel implements ActionListener, MouseListener {
 
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		GUI g = new GUI();
+		
 
 	}
 
 	public void paint(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
 		super.paintComponents(g);
+		
+		//System.out.println(questionScreen);
 
-		g2.drawImage(starting, x, y, this);
-		g2.drawImage(startSubject, x, y, this);
+			if (!answered) {
+				removeAll();
+			  g2.drawImage(starting, x, y, this);
+			  g2.drawImage(startSubject, x, y, this);
+			
+			  if(questionScreen) {
+				  removeAll();
+			  g2.drawImage(questionP, x, y, this);
+			  g2.drawString(getNextQuestion(sub, count),25, 100);
+			  removeAll();
+			  
+			  
+			  
+			
+			int add = 0;
+			  for (int i = 0; i < 4; i++) { 
+				  String[] answers = getNextAnswers(sub,count);
+					g2.drawString(answers[i], 25+add, 200);
+					add += 130;
+				}
+			  }
+	
+			}  
+			
+			if (answered) {
+				System.out.println(ansChoice);
+			if (wr==1) {
+				g2.drawImage(wrong, x, y, this);
+			}
+			else if (wr==0) {
+				g2.drawImage(right,  x,  y,  this);
+			}
+			
+		
 	
 		if (questionScreen &&determine ==false) {
 			g2.drawImage(questionP, x, y, this);
-		g.setColor(Color.BLACK);
-		g.drawString(question,25, 100);
+		g2.setColor(Color.BLACK);
+		g2.drawString(question,25, 100);
+		int adds = 0; 
+		for (int i = 0; i < 4; i++) {
+			g2.drawString(answer[i], 25+adds, 200);
+			adds += 130;
 		}
+		
+		}
+			}
 		
 		update();
 	}
@@ -205,7 +260,16 @@ public class GUI extends JPanel implements ActionListener, MouseListener {
 	public void gameOver() {
 
 	}
+	
+	public Rectangle screen() {
+		Rectangle screen;
+		screen = new Rectangle(500,500);
+		return screen;
+	}
 
+	
+	
+	
 	public Rectangle selectionOption(String sub) {
 		Rectangle subBoarder;
 		switch (sub) {
@@ -219,7 +283,7 @@ public class GUI extends JPanel implements ActionListener, MouseListener {
 			subBoarder = new Rectangle(21, 115 + ((200 - 115) * 2) + 5, (488 - 21), (200 - 115));
 			break;
 		default:
-			subBoarder = new Rectangle(21, 115 + ((200 - 115) * 3), 488 - 21, 200 - 115);
+			subBoarder = new Rectangle(21, 115 + ((200 - 115) * 3)+5, 488 - 21, 200 - 115);
 			break;
 //		default:
 //			subBoarder = new Rectangle(21, 115 + ((200 - 115) * 3) + 5, (488 - 21), (200 - 115));
@@ -251,21 +315,70 @@ public class GUI extends JPanel implements ActionListener, MouseListener {
 		String question = "";
 		switch (sub) {
 		case "chem":
-			question=chem.sortQs().get(0);
+			question=chem.sortQs().get(index);
 			break;
 		case "psych":
 			question=psych.sortQs().get(index);
 			break;
-		case "music":
+		case "mus":
 			question=mus.sortQs().get(index);
 			break;
 		default:
-			question=jap.sortQs().get(0);
+			question=jap.sortQs().get(index);
 
 		}
 		return question;
 	}
-
+	
+	public String[] getNextAnswers(String sub, int index) {
+		String[] answer = new String[4];
+		switch (sub) {
+		case "chem":
+			String[][] stored = new String[chem.sortQs().size()][4];
+			stored = chem.sortAs();
+			answer = stored[index];
+			break;
+		case "psych":
+			String[][] storeds = new String[psych.sortQs().size()][4];
+			storeds = psych.sortAs();
+			answer = storeds[index];
+			break;
+		case "mus":
+			String[][] storedss = new String[mus.sortQs().size()][4];
+			storedss = mus.sortAs();
+			answer = storedss[index];
+			break;
+		default:
+			String[][] storedsss = new String[jap.sortQs().size()][4];
+			storedsss = jap.sortAs();
+			answer = storedsss[index];
+			break;
+		}
+		
+		return answer;
+	
+	}
+	
+	public String getNextAnswer(String sub, int index) throws FileNotFoundException {
+		String answer = "";
+		switch (sub) {
+		case "chem":
+			answer = chem.getCorrectAnsIn(index);
+			break;
+		case "psych":
+			answer = psych.getCorrectAnsIn(index);
+			break;
+		case "mus":
+			answer = mus.getCorrectAnsIn(index);
+			break;
+		default:
+			answer = jap.getCorrectAnsIn(index);
+			break;
+		}
+		
+		return answer;
+	
+	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
@@ -276,75 +389,122 @@ public class GUI extends JPanel implements ActionListener, MouseListener {
 			startScreen = false;
 		}
 	}
+	
+	
 
 	public void mouseClicked(MouseEvent m) {
 		int mouseX = m.getX();
 		int mouseY = m.getY();
-		String sub="";
 		System.out.println(mouseX + " " + mouseY);
+		if (answered) {
+			System.out.println("bubbles");
+			answered = false; 
+			this.repaint();
+			revalidate();
+			return;
+		}
 		if (!startScreen) {
 			if (selectionOption("Music").contains(mouseX, mouseY) && stop) {
 				starting = Toolkit.getDefaultToolkit().getImage("music history.png").getScaledInstance(500, 475,
 						java.awt.Image.SCALE_SMOOTH);
-				question= getNextQuestion("music", 1);
-				System.out.println(question);
+				question= getNextQuestion("music", 0);
+				String[][] stored = new String[mus.sortQs().size()][4];
+				stored = mus.sortAs();
+				answer = stored[count];
 				stop = false;
 				sub= "mus";
 				questionScreen = true;
-				valMusic++;
+			}
 				
-			} else if (selectionOption("Psych").contains(mouseX, mouseY) && stop) {
+			else if (selectionOption("Psych").contains(mouseX, mouseY) && stop) {
 				starting = Toolkit.getDefaultToolkit().getImage("psych.png").getScaledInstance(500, 475,
 						java.awt.Image.SCALE_SMOOTH);
 				questionScreen = true;
 				sub="psych";
 				question= getNextQuestion("psych", 0);
+				String[][] stored = new String[psych.sortQs().size()][4];
+				stored = psych.sortAs();
+				answer = stored[count];
 				stop = false;
-				valPsych++;
 
 			} else if (selectionOption("Japanese").contains(mouseX, mouseY) && stop) {
 				starting = Toolkit.getDefaultToolkit().getImage("japanese.png").getScaledInstance(500, 475,
 						java.awt.Image.SCALE_SMOOTH);
 				questionScreen = true;
 				question= getNextQuestion("jap", 0);
+				String[][] stored = new String[jap.sortQs().size()][4];
+				stored = jap.sortAs();
+				answer = stored[count];
 				sub="jap";
 				stop = false;
-				valJap++;
-
+				
 			} else if (selectionOption("Chem").contains(mouseX, mouseY) && stop) {
 				starting = Toolkit.getDefaultToolkit().getImage("chemistry.png").getScaledInstance(500, 475,
 						java.awt.Image.SCALE_SMOOTH);
 				questionScreen = true;
-				sub="chem";
 				question= getNextQuestion("chem", 0);
+				String[][] stored = new String[chem.sortQs().size()][4];
+				stored = chem.sortAs();
+				answer = stored[count];
+				sub="chem";
 				stop = false;
-				valChem++;
-				
-
 			
 		}
-		else if (questionScreen && !stop && !determine) {
+		else if (questionScreen && !stop) {
 			if (ansOption("a").contains(mouseX, mouseY)) {
-				ansChoice = 0;
-				count++;
-				Answer(m,sub);
+				ansChoice = "a";
+				try {
+					Answer(sub);
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				determine =true;
+				count++;
 			} else if (ansOption("b").contains(mouseX, mouseY)) {
-				ansChoice = 1;
-				count++;
-				Answer(m,sub);
+				ansChoice = "b";
+				try {
+					Answer(sub);
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				determine=true;
+				count++;
 			} else if (ansOption("c").contains(mouseX, mouseY)) {
-				ansChoice = 2;
-				count++;
-			Answer(m,sub);
-			determine=true;
-			} else {
-				ansChoice = 3;
-				count++;
-				Answer(m,sub);
-				determine=true;
+				ansChoice = "c";
+			try {
+				Answer(sub);
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
+			determine=true;
+			count++;
+			} else if (ansOption("d").contains(mouseX, mouseY)) {
+				ansChoice = "d";
+				try {
+					Answer(sub);
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				determine=true;
+				count++;
+			}
+			this.repaint();
+			revalidate();
+			/*
+			try {
+				Thread.sleep(3000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			*/
+			//answered = false;
+			this.repaint();
+			revalidate();
 		}}
 	}
 
@@ -372,68 +532,99 @@ public class GUI extends JPanel implements ActionListener, MouseListener {
 
 	}
 	
-	public boolean rightAnswer(String sub) {
+	public boolean rightAnswer(String sub) throws FileNotFoundException {
+	
 		boolean result = false;
+		//System.out.println(sub);
+		
 		switch(sub) {
 			case "chem":
-		if(count<chem.sortQs().size()) {
-		if (chem.getCorrectAnsIn(count) == ansChoice) {
-			result = true;
-		}}
+				if(count<chem.sortQs().size()) {
+					if (chem.getCorrectAnsIn(count).equals(ansChoice)) {
+				result = true;
+			System.out.println(result);
+		}
+				}
+		
 		break;
 			case "psych":
 		if(count<psych.sortQs().size()) {
-			if (psych.getCorrectAnsIn(count) == ansChoice) {
+			if (psych.getCorrectAnsIn(count).equals(ansChoice)) {
 				result = true;
 			}}
 		break;
 			case "jap":
 		if(count<jap.sortQs().size()) {
-				if (jap.getCorrectAnsIn(count) == ansChoice) {
+				if (jap.getCorrectAnsIn(count).equals(ansChoice)) {
 					result = true;
 				}}
 		break;
 			default:
 		if(count<mus.sortQs().size()) {
-			if (mus.getCorrectAnsIn(count) == ansChoice) {
+			if (mus.getCorrectAnsIn(count).equals(ansChoice)) {
 				result = true;
-			}}
-		break;}
-		return result; 
-	}
-	
-	public void revert() {
-		if (valChem != 0) {
-			starting = Toolkit.getDefaultToolkit().getImage("chemistry.png").getScaledInstance(500,475,java.awt.Image.SCALE_SMOOTH);
-		}
-		
-		if (valPsych != 0) {
-			starting = Toolkit.getDefaultToolkit().getImage("psych.png").getScaledInstance(500,475,java.awt.Image.SCALE_SMOOTH);
-		}
-		
-		if (valMusic != 0) {
-			starting = Toolkit.getDefaultToolkit().getImage("music history.png").getScaledInstance(500,475,java.awt.Image.SCALE_SMOOTH);
-		}
-		
-		if (valJap != 0) {
-			starting = Toolkit.getDefaultToolkit().getImage("japanese.png").getScaledInstance(500,475,java.awt.Image.SCALE_SMOOTH);
-		}
-		
-	}
-	
-	
-	
-	public void Answer(MouseEvent r, String sub) {
-		int mouseX = r.getX();
-		int mouseY = r.getY();
-		boolean result = false;
-		if(rightAnswer(sub) && !result) {
-			result = true;
-			starting = Toolkit.getDefaultToolkit().getImage("right.gif").getScaledInstance(500,475,java.awt.Image.SCALE_SMOOTH);
 			}
-		else if (!result && !rightAnswer(sub)) {
-			starting = Toolkit.getDefaultToolkit().getImage("wrong.gif").getScaledInstance(500,475,java.awt.Image.SCALE_SMOOTH);
-			result = true;
+			}
+	//	break;
+		
 		}
+		return result; 
+		
+	}
+	
+	
+	public void Answer(String sub) throws FileNotFoundException {
+	answered = true;
+		if(rightAnswer(sub)) {
+			right = Toolkit.getDefaultToolkit().getImage("right.gif").getScaledInstance(500,475,java.awt.Image.SCALE_SMOOTH);
+			System.out.println(determine);
+			wr=0;
+			//revalidate();
+			//revert();
+		}		
+		else if (!rightAnswer(sub)){
+			wrong = Toolkit.getDefaultToolkit().getImage("wrong.gif").getScaledInstance(500,475,java.awt.Image.SCALE_SMOOTH);
+			wr=1;
+		}
+		
+		
+		/*
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		*/
+		
+    }
+	/*
+	public void revert() {
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		frame.getContentPane().removeAll();
+		Graphics2D g2 = (Graphics2D) g;
+        super.paintComponents(g);
+
+        g2.drawImage(starting, x, y, this);
+        g2.drawImage(startSubject, x, y, this);
+            g2.drawImage(questionP, x, y, this);
+        g.setColor(Color.BLACK);
+        g.drawString(question,25, 100);
+        int add = 0; 
+        for (int i = 0; i < 4; i++) {
+            g.drawString(answer[i], 25+add, 200);
+            add += 130;
+        }
+		
+		
+	}
+	*/
+	
 }
-}
+
