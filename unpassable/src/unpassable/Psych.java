@@ -14,8 +14,8 @@ public class Psych {
 	public void scan() {
 	try {
 	      
-	      Scanner myReader = new Scanner(myObj);
-	      Scanner myReader2 = new Scanner(aKey);
+	      Scanner myReader = new Scanner(myObj,"utf-8");
+	      Scanner myReader2 = new Scanner(aKey,"utf-8");
 	      
 	  
 	      while (myReader.hasNextLine()) {
