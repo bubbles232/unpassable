@@ -40,7 +40,7 @@ if(data.length()>0) {
 		        String data2 = myReader2.nextLine();
 		        key.add(data2);
 		      }
-		   key.set(0, "d");
+		   
 		   
 		     
 		      myReader.close();
@@ -67,13 +67,12 @@ public String [][] sortAs (){
 	}
 	return newA;
 }
-public String getCorrectAnsIn(int questionNum) throws FileNotFoundException {
-	String answer = "";
-	for (int i = 0; i < 13; i++) {
-		if (i == questionNum) {
-			answer = key.get(i);
-		}
-	}
+public int getCorrectAnsIn(int questionNum)  {
+	int answer=0;
+	for(int i=0; i<sortAs()[questionNum].length;i++) {
+		if(sortAs()[questionNum][i].substring(1,2).equals(key.get(questionNum).trim())) {
+		answer=i;
+	}}
 	return answer;
 }
 }
