@@ -77,7 +77,10 @@ public class GUI extends JPanel implements ActionListener, MouseListener {
 	private int score;
 	private boolean gameOver;
 	private Font l;
+	private Font l2;
+
 	GridLayout grid = new GridLayout();
+	
 	/**
 	 * @throws FileNotFoundException  
 	 * 
@@ -100,12 +103,16 @@ gameOver=false;
 		mus.scan();
 		psych.scan();
 		jap.scan();
-		questionP = Toolkit.getDefaultToolkit().getImage("questions (1).png").getScaledInstance(500, 475,
+	
+		questionP = Toolkit.getDefaultToolkit().getImage("questions.png").getScaledInstance(500, 475,
 				java.awt.Image.SCALE_SMOOTH);
 		// this.setLayout(new GridLayout(4,1));
+		
 		determine =false;
 		frame.setSize(500, 500);
 		this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+
+		
 		questionBox = new JPanel();
 		southPanel = new JPanel();
 		question = "";
@@ -117,11 +124,16 @@ gameOver=false;
 		questionBox.setVisible(true);
 		frame.add(questionBox, BorderLayout.CENTER);
 		frame.add(southPanel, BorderLayout.SOUTH);
+		
+		System.out.println(chem.getCorrectAnsIn(2));
+		
 		southPanel.setLayout(new BoxLayout(southPanel, BoxLayout.LINE_AXIS));
+
 		starting = Toolkit.getDefaultToolkit().getImage("start.gif");
 		startButton = Toolkit.getDefaultToolkit().getImage("start button.jpg");
 		right = Toolkit.getDefaultToolkit().getImage("");
 		wrong = Toolkit.getDefaultToolkit().getImage("");
+
 		ImageIcon b = new ImageIcon(startButton);
 		Image image = b.getImage(); // transform it
 		Image newimg = image.getScaledInstance(475, 120, java.awt.Image.SCALE_SMOOTH);
@@ -139,9 +151,14 @@ gameOver=false;
 		start.setBackground(Color.BLACK);
 
 		frame.setResizable(false);
+
 		frame.add(this);
 		frame.setVisible(true);
 		
+	
+		
+		
+
 		this.addMouseListener(this);
 		// southPanel.add(Box.createHorizontalGlue());
 		southPanel.add(start);
@@ -150,6 +167,11 @@ gameOver=false;
 		count=0;
 		this.repaint();
 		revalidate();
+
+	
+
+		
+
 	}
 
 	private Image getImage(String path) {
@@ -176,35 +198,53 @@ gameOver=false;
 
 	public static void main(String[] args) throws FileNotFoundException {
 		GUI g = new GUI();
+		
+
 	}
 
 	public void paint(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
 		super.paintComponents(g);
+		
+		//System.out.println(questionScreen);
+int add = 0;
 
-		int add = 0;
 			if (!answered) {
 				removeAll();
 			  g2.drawImage(starting, x, y, this);
 			  g2.drawImage(startSubject, x, y, this);
+			
 			  if(questionScreen) {
 				  removeAll();
+			 
 			  switch (sub) {
 			  case "mus":
+			  
 			  if (count < mus.sortQs().size()-1) {
 				  g2.drawImage(questionP, x, y, this);
-			  g2.drawString(mus.sortQs().get(count),25, 100);
+				  if(mus.sortQs().get(count).length()<80) {
+			  g2.drawString(mus.sortQs().get(count),25, 100);}
+				  else {
+				  g2.drawString(mus.sortQs().get(count).substring(0,mus.sortQs().get(count).length()/2) + "-",25, 100);
+				  g2.drawString(mus.sortQs().get(count).substring(mus.sortQs().get(count).length()/2), 25, 115);}
 			  for (int i = 0; i < 4; i++) { 
 				  String[] answers = getNextAnswers(sub,count);
 					g2.drawString(answers[i], 25, 150+add);
 					add += 30;
 				}
 			  }
+			  
 			  break;
+			  
 				  case "jap":
+			  
 			  if (count < jap.sortQs().size()-1) {
 				  g2.drawImage(questionP, x, y, this);
-			  g2.drawString(jap.sortQs().get(count),25, 100);
+				  if(jap.sortQs().get(count).length()<80) {
+					  g2.drawString(jap.sortQs().get(count),25, 100);}
+						  else {
+						  g2.drawString(jap.sortQs().get(count).substring(0,jap.sortQs().get(count).length()/2) + "-",25, 100);
+						  g2.drawString(jap.sortQs().get(count).substring(jap.sortQs().get(count).length()/2), 25, 115);}
 			  for (int i = 0; i < 4; i++) { 
 				  String[] answers = getNextAnswers(sub,count);
 					g2.drawString(answers[i], 25, 150+add);
@@ -213,10 +253,14 @@ gameOver=false;
 			  }
 		break;
 			  case "chem":
-
+			  
 			  if (count < chem.sortQs().size()-1) {
 				  g2.drawImage(questionP, x, y, this);
-			  g2.drawString(chem.sortQs().get(count),25, 100);
+				  if(chem.sortQs().get(count).length()<80) {
+					  g2.drawString(chem.sortQs().get(count),25, 100);}
+						  else {
+						  g2.drawString(chem.sortQs().get(count).substring(0,chem.sortQs().get(count).length()/2) + "-",25, 100);
+						  g2.drawString(chem.sortQs().get(count).substring(chem.sortQs().get(count).length()/2), 25, 115);}
 			  for (int i = 0; i < 4; i++) { 
 				  String[] answers = getNextAnswers(sub,count);
 					g2.drawString(answers[i], 25, 150+add);
@@ -228,7 +272,11 @@ gameOver=false;
 			  
 			  if (count < psych.sortQs().size()-1) {
 				  g2.drawImage(questionP, x, y, this);
-			  g2.drawString(psych.sortQs().get(count),25, 100);
+				  if(psych.sortQs().get(count).length()<80) {
+					  g2.drawString(psych.sortQs().get(count),25, 100);}
+						  else {
+						  g2.drawString(psych.sortQs().get(count).substring(0,psych.sortQs().get(count).length()/2) + "-",25, 100);
+						  g2.drawString(psych.sortQs().get(count).substring(psych.sortQs().get(count).length()/2), 25, 115);}
 			  for (int i = 0; i < 4; i++) { 
 				  String[] answers = getNextAnswers(sub,count);
 					g2.drawString(answers[i], 25, 150+add);
@@ -237,9 +285,15 @@ gameOver=false;
 			  }
 			  removeAll();
 			  break;}
+			  
+			  
+			
+		
+			
 			  }
 	
 			}  
+			
 			if (answered) {
 				System.out.println(ansChoice);
 			if (wr==1) {
@@ -248,6 +302,11 @@ gameOver=false;
 			else if (wr==0) {
 				g2.drawImage(right,  x,  y,  this);
 			}
+			
+		
+	
+		
+		
 		}
 			if(gameOver) {
 				int total=0;
@@ -267,12 +326,15 @@ gameOver=false;
 						break;
 				}
 				g.setFont(l);
-				g.drawString(((double)score/total)* 100 + " %",350,350); 
-				l = new Font("Seirf", 20,20);
-				g.drawString("Play a different subject? Click here!",50 , 400);
+				g.drawString(((double)score/(total-1))* 100 + " %",350,350); 
+				l2 = new Font("Seirf", 20,20);
+				g.setFont(l2);
+				g.drawString("Play a different subject? Click here!",50 , 450);
+				
 			}
 		
 		update();}
+	
 
 	public void start() {
 		gameOver= false;
@@ -283,6 +345,7 @@ gameOver=false;
 		mus.scan();
 		starting = Toolkit.getDefaultToolkit().getImage("start.gif");
 		start.setVisible(true);
+		stop=true;
 	}
 
 	
@@ -293,6 +356,9 @@ gameOver=false;
 		return screen;
 	}
 
+	
+	
+	
 	public Rectangle selectionOption(String sub) {
 		Rectangle subBoarder;
 		switch (sub) {
@@ -515,13 +581,13 @@ gameOver=false;
 							java.awt.Image.SCALE_SMOOTH);
 					
 					gameOver=true;
-				}
+				}else {
 				
 				questionScreen = false;
 				
 				starting = Toolkit.getDefaultToolkit().getImage("fail.gif").getScaledInstance(500, 475,
 						java.awt.Image.SCALE_SMOOTH);
-				gameOver=true;
+				gameOver=true;}
 				}
 			else if(sub.equals("mus")&&count>=mus.sortQs().size()-1) {
 				if(win()==true) {
@@ -646,25 +712,27 @@ gameOver=false;
 	public boolean win() {
 		boolean won;
 		if(sub.equals("chem")) {
-			if ((double)score/chem.sortQs().size()>0.9  ) {
+			if ((double)score/(chem.sortQs().size()-1)>=0.9  ) {
 				won =true;
+				System.out.println("win");
+				System.out.println(sub);
 			}
 			won=false;
 		}
 		else if (sub.equals("psych")) {
-			if ((double)score/psych.sortQs().size()>0.9  ) {
+			if ((double)score/(psych.sortQs().size()-1)>=0.9  ) {
 				won =true;
 			}
 			won=false;
 		}
 		else if (sub.equals("jap")) {
-			if ((double)score/jap.sortQs().size()>0.9  ) {
+			if ((double)score/(jap.sortQs().size()-1)>=0.9  ) {
 				won =true;
 			}
 			won=false;
 		}
 		else {
-			if ((double)score/mus.sortQs().size()>0.9  ) {
+			if ((double)score/(mus.sortQs().size()-1)>=0.9  ) {
 				won =true;
 			}
 			won=false;
