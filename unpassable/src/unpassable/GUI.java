@@ -77,10 +77,7 @@ public class GUI extends JPanel implements ActionListener, MouseListener {
 	private int score;
 	private boolean gameOver;
 	private Font l;
-	
-
 	GridLayout grid = new GridLayout();
-	
 	/**
 	 * @throws FileNotFoundException  
 	 * 
@@ -103,16 +100,12 @@ gameOver=false;
 		mus.scan();
 		psych.scan();
 		jap.scan();
-	
 		questionP = Toolkit.getDefaultToolkit().getImage("questions (1).png").getScaledInstance(500, 475,
 				java.awt.Image.SCALE_SMOOTH);
 		// this.setLayout(new GridLayout(4,1));
-		
 		determine =false;
 		frame.setSize(500, 500);
 		this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
-
-		
 		questionBox = new JPanel();
 		southPanel = new JPanel();
 		question = "";
@@ -124,16 +117,11 @@ gameOver=false;
 		questionBox.setVisible(true);
 		frame.add(questionBox, BorderLayout.CENTER);
 		frame.add(southPanel, BorderLayout.SOUTH);
-		
-		System.out.println(chem.getCorrectAnsIn(2));
-		
 		southPanel.setLayout(new BoxLayout(southPanel, BoxLayout.LINE_AXIS));
-
 		starting = Toolkit.getDefaultToolkit().getImage("start.gif");
 		startButton = Toolkit.getDefaultToolkit().getImage("start button.jpg");
 		right = Toolkit.getDefaultToolkit().getImage("");
 		wrong = Toolkit.getDefaultToolkit().getImage("");
-
 		ImageIcon b = new ImageIcon(startButton);
 		Image image = b.getImage(); // transform it
 		Image newimg = image.getScaledInstance(475, 120, java.awt.Image.SCALE_SMOOTH);
@@ -151,14 +139,9 @@ gameOver=false;
 		start.setBackground(Color.BLACK);
 
 		frame.setResizable(false);
-
 		frame.add(this);
 		frame.setVisible(true);
 		
-	
-		
-		
-
 		this.addMouseListener(this);
 		// southPanel.add(Box.createHorizontalGlue());
 		southPanel.add(start);
@@ -167,11 +150,6 @@ gameOver=false;
 		count=0;
 		this.repaint();
 		revalidate();
-
-	
-
-		
-
 	}
 
 	private Image getImage(String path) {
@@ -198,28 +176,21 @@ gameOver=false;
 
 	public static void main(String[] args) throws FileNotFoundException {
 		GUI g = new GUI();
-		
-
 	}
 
 	public void paint(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
 		super.paintComponents(g);
-		
-		//System.out.println(questionScreen);
-int add = 0;
 
+		int add = 0;
 			if (!answered) {
 				removeAll();
 			  g2.drawImage(starting, x, y, this);
 			  g2.drawImage(startSubject, x, y, this);
-			
 			  if(questionScreen) {
 				  removeAll();
-			 
 			  switch (sub) {
 			  case "mus":
-			  
 			  if (count < mus.sortQs().size()-1) {
 				  g2.drawImage(questionP, x, y, this);
 			  g2.drawString(mus.sortQs().get(count),25, 100);
@@ -229,11 +200,8 @@ int add = 0;
 					add += 30;
 				}
 			  }
-			  
 			  break;
-			  
 				  case "jap":
-			  
 			  if (count < jap.sortQs().size()-1) {
 				  g2.drawImage(questionP, x, y, this);
 			  g2.drawString(jap.sortQs().get(count),25, 100);
@@ -245,7 +213,7 @@ int add = 0;
 			  }
 		break;
 			  case "chem":
-			  
+
 			  if (count < chem.sortQs().size()-1) {
 				  g2.drawImage(questionP, x, y, this);
 			  g2.drawString(chem.sortQs().get(count),25, 100);
@@ -269,15 +237,9 @@ int add = 0;
 			  }
 			  removeAll();
 			  break;}
-			  
-			  
-			
-		
-			
 			  }
 	
 			}  
-			
 			if (answered) {
 				System.out.println(ansChoice);
 			if (wr==1) {
@@ -286,11 +248,6 @@ int add = 0;
 			else if (wr==0) {
 				g2.drawImage(right,  x,  y,  this);
 			}
-			
-		
-	
-		
-		
 		}
 			if(gameOver) {
 				int total=0;
@@ -313,11 +270,9 @@ int add = 0;
 				g.drawString(((double)score/total)* 100 + " %",350,350); 
 				l = new Font("Seirf", 20,20);
 				g.drawString("Play a different subject? Click here!",50 , 400);
-				
 			}
 		
 		update();}
-	
 
 	public void start() {
 		gameOver= false;
@@ -338,9 +293,6 @@ int add = 0;
 		return screen;
 	}
 
-	
-	
-	
 	public Rectangle selectionOption(String sub) {
 		Rectangle subBoarder;
 		switch (sub) {
