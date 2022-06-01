@@ -23,7 +23,7 @@ public class Music {
 	  
 	      while (myReader.hasNextLine()) {
 	        String data = myReader.nextLine();
-if(data.length()>1){
+if(data.length()>0){
 	      if(data.substring(0,1).toLowerCase().equals("a")||data.substring(0,1).toLowerCase().equals("b")||data.substring(0,1).toLowerCase().equals("c") ||data.substring(0,1).toLowerCase().equals("d")) {    	
 	        answers.add(data);
 	      }
@@ -68,13 +68,12 @@ public String [][] sortAs (){
 public ArrayList<String> getAnswers(){
 	return answers;
 }
-public String getCorrectAnsIn(int questionNum) throws FileNotFoundException {
-	String answer = "";
-	for (int i = 0; i < 20; i++) {
-		if (i == questionNum) {
-			answer = key.get(i);
-		}
-	}
+public int getCorrectAnsIn(int questionNum)  {
+	int answer=0;
+	for(int i=0; i<sortAs()[questionNum].length;i++) {
+		if(sortAs()[questionNum][i].substring(0,1).toLowerCase().equals(key.get(questionNum).trim())) {
+		answer=i;
+	}}
 	return answer;
 }
 }
