@@ -17,7 +17,7 @@
 ### ***Chemistry***
 This class presents the chemistry questions and answer choices one at a time if the subject "Chemistry" is selected. When an answer is elected, it checks the chosen letter with the answer key, using an index to confirm if the selected answer is correct. A score is kept. A point will be awarded for correct answers. No point will be given or taken away for incorrect answers.
 
- <img src="https://github.com/bubbles232/unpassable/blob/main/chemistry.png" width="300" height="300">
+ <img src="[https://github.com/bubbles232/unpassable/blob/main/chemistry.png](https://github.com/bubbles232/unpassable/blob/a3e2044c53fb372f5a4472d7ef73eeaf9aa74fd7/chemistry%20(1).png)" width="300" height="300">
  
 ### ***Psychology***
 This class displays a psychology questions with its answer choices one at a time if the subject "Psychology" is selected. When an answer is elected, it checks the chosen letter with the answer key, using an index to confirm if the selected answer is correct. A score is kept. A point will be awarded for correct answers. No point will be given or taken away for incorrect answers.
