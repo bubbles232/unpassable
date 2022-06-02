@@ -22,7 +22,7 @@ This class presents the chemistry questions and answer choices one at a time if 
 ### ***Psychology***
 This class displays a psychology questions with its answer choices one at a time if the subject "Psychology" is selected. When an answer is elected, it checks the chosen letter with the answer key, using an index to confirm if the selected answer is correct. A score is kept. A point will be awarded for correct answers. No point will be given or taken away for incorrect answers.
 
- <img src="https://github.com/bubbles232/unpassable/blob/main/psych.png" width="300" height="300">
+ <img src="https://github.com/bubbles232/unpassable/blob/26facbf8a00e4d9fb21f046b053b16c9ca27522b/unpassable/psych.png" width="300" height="300">
 
 ### ***Japanese***
 This class presents the japanese questions and answer choices one at a time if the subject "Japanese" is selected. When an answer is elected, it checks the chosen letter with the answer key, using an index to confirm if the selected answer is correct. A score is kept. A point will be awarded for correct answers. No point will be given or taken away for incorrect answers.
